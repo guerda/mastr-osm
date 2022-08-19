@@ -13,5 +13,6 @@ def parse_date(_, value):
         value += "T00:00:00"
     return isodate.parse_datetime(value)
 
-# Fix date parsing in order to avoid second issue
-xsd_builtins_types.DateTime.pythonvalue = parse_date
+def inject_date_fix():
+    # Fix date parsing in order to avoid second issue
+    xsd_builtins_types.DateTime.pythonvalue = parse_date
