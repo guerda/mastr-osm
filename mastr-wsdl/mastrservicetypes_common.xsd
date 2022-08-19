@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Common" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:mastr="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle">
+
+  <import schemaLocation="mastrbasetypes.xsd" namespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle"/>
+  <element name="GetLokaleUhrzeitRequest" type="mastr:GetLokaleUhrzeitParameter"/>
+  <element name="GetLokaleUhrzeitResponse" type="mastr:GetLokaleUhrzeitAntwort"/>
+  <element name="GetLokaleUhrzeitMitAuthentifizierungRequest" type="mastr:GetLokaleUhrzeitMitAuthentifizierungParameter"/>
+  <element name="GetLokaleUhrzeitMitAuthentifizierungResponse" type="mastr:GetLokaleUhrzeitMitAuthentifizierungAntwort"/>
+  <element name="GetListeKatalogkategorienRequest" type="mastr:GetListeKatalogkategorienParameter"/>
+  <element name="GetListeKatalogkategorienResponse" type="mastr:GetListeKatalogkategorienAntwort"/>
+  <element name="GetKatalogwerteRequest" type="mastr:GetKatalogwerteParameter"/>
+  <element name="GetKatalogwerteResponse" type="mastr:GetKatalogwerteAntwort"/>
+  <element name="GetBilanzierungsgebieteRequest" type="mastr:GetBilanzierungsgebieteParameter"/>
+  <element name="GetBilanzierungsgebieteResponse" type="mastr:GetBilanzierungsgebieteAntwort"/>
+  <element name="GetAktuellerStandTageskontingentRequest" type="mastr:GetAktuellerStandTageskontingentParameter"/>
+  <element name="GetAktuellerStandTageskontingentResponse" type="mastr:GetAktuellerStandTageskontingentAntwort"/>
+</schema>

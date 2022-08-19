@@ -1,0 +1,5 @@
+rel[postal_code="{{plz}}"];
+map_to_area;
+node["power"="generator"]["generator:method"="photovoltaic"](area);
+way["power"="generator"]["generator:method"="photovoltaic"](area);
+relation["power"="generator"]["generator:method"="photovoltaic"](area);

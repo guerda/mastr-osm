@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Anlage" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:mastr="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle">
+
+  <import schemaLocation="mastrbasetypes.xsd" namespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle"/>
+  <!-- 6.6 Einheiten-Funktionen -->
+  <element name="GetListeLetzteAktualisierungRequest" type="mastr:GetListeLetzteAktualisierungParameter"/>
+  <element name="GetListeLetzteAktualisierungResponse" type="mastr:GetListeLetzteAktualisierungAntwort"/>
+  <element name="GetListeAlleEinheitenRequest" type="mastr:GetListeAlleEinheitenParameter"/>
+  <element name="GetListeAlleEinheitenResponse" type="mastr:GetListeAlleEinheitenAntwort"/>
+  <element name="GetListeFreigegebeneEinheitenRequest" type="mastr:GetListeFreigegebeneEinheitenParameter"/>
+  <element name="GetListeFreigegebeneEinheitenResponse" type="mastr:GetListeFreigegebeneEinheitenAntwort"/>
+  <element name="GetListeGeloeschteUndDeaktivierteEinheitenRequest" type="mastr:GetListeGeloeschteUndDeaktivierteEinheitenParameter"/>
+  <element name="GetListeGeloeschteUndDeaktivierteEinheitenResponse" type="mastr:GetListeGeloeschteUndDeaktivierteEinheitenAntwort"/>
+  <element name="GetEinheitWindRequest" type="mastr:GetEinheitWindParameter"/>
+  <element name="GetEinheitWindResponse" type="mastr:GetEinheitWindAntwort"/>
+  <element name="GetEinheitSolarRequest" type="mastr:GetEinheitSolarParameter"/>
+  <element name="GetEinheitSolarResponse" type="mastr:GetEinheitSolarAntwort"/>
+  <element name="GetEinheitBiomasseRequest" type="mastr:GetEinheitBiomasseParameter"/>
+  <element name="GetEinheitBiomasseResponse" type="mastr:GetEinheitBiomasseAntwort"/>
+  <element name="GetEinheitWasserRequest" type="mastr:GetEinheitWasserParameter"/>
+  <element name="GetEinheitWasserResponse" type="mastr:GetEinheitWasserAntwort"/>
+  <element name="GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest" type="mastr:GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungParameter"/>
+  <element name="GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse" type="mastr:GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungAntwort"/>
+  <element name="GetEinheitVerbrennungRequest" type="mastr:GetEinheitVerbrennungParameter"/>
+  <element name="GetEinheitVerbrennungResponse" type="mastr:GetEinheitVerbrennungAntwort"/>
+  <element name="GetEinheitKernkraftRequest" type="mastr:GetEinheitKernkraftParameter"/>
+  <element name="GetEinheitKernkraftResponse" type="mastr:GetEinheitKernkraftAntwort"/>
+  <element name="GetEinheitStromSpeicherRequest" type="mastr:GetEinheitStromSpeicherParameter"/>
+  <element name="GetEinheitStromSpeicherResponse" type="mastr:GetEinheitStromSpeicherAntwort"/>
+  <element name="GetEinheitStromVerbraucherRequest" type="mastr:GetEinheitStromVerbraucherParameter"/>
+  <element name="GetEinheitStromVerbraucherResponse" type="mastr:GetEinheitStromVerbraucherAntwort"/>
+  <element name="GetEinheitGasErzeugerRequest" type="mastr:GetEinheitGasErzeugerParameter"/>
+  <element name="GetEinheitGasErzeugerResponse" type="mastr:GetEinheitGasErzeugerAntwort"/>
+  <element name="GetEinheitGasSpeicherRequest" type="mastr:GetEinheitGasSpeicherParameter"/>
+  <element name="GetEinheitGasSpeicherResponse" type="mastr:GetEinheitGasSpeicherAntwort"/>
+  <element name="GetEinheitGasVerbraucherRequest" type="mastr:GetEinheitGasVerbraucherParameter"/>
+  <element name="GetEinheitGasVerbraucherResponse" type="mastr:GetEinheitGasVerbraucherAntwort"/>
+  <element name="GetEinheitGenehmigungRequest" type="mastr:GetEinheitGenehmigungParameter"/>
+  <element name="GetEinheitGenehmigungResponse" type="mastr:GetEinheitGenehmigungAntwort"/>
+  <!-- 6.7 Einheitengruppierungsobjekte -->
+  <element name="GetStromSpeicherRequest" type="mastr:GetStromSpeicherParameter"/>
+  <element name="GetStromSpeicherResponse" type="mastr:GetStromSpeicherAntwort"/>
+  <element name="GetGasSpeicherRequest" type="mastr:GetGasSpeicherParameter"/>
+  <element name="GetGasSpeicherResponse" type="mastr:GetGasSpeicherAntwort"/>
+  <element name="GetAnlageEegWindRequest" type="mastr:GetAnlageEegWindParameter"/>
+  <element name="GetAnlageEegWindResponse" type="mastr:GetAnlageEegWindAntwort"/>
+  <element name="GetAnlageEegSolarRequest" type="mastr:GetAnlageEegSolarParameter"/>
+  <element name="GetAnlageEegSolarResponse" type="mastr:GetAnlageEegSolarAntwort"/>
+  <element name="GetAnlageEegBiomasseRequest" type="mastr:GetAnlageEegBiomasseParameter"/>
+  <element name="GetAnlageEegBiomasseResponse" type="mastr:GetAnlageEegBiomasseAntwort"/>
+  <element name="GetAnlageEegWasserRequest" type="mastr:GetAnlageEegWasserParameter"/>
+  <element name="GetAnlageEegWasserResponse" type="mastr:GetAnlageEegWasserAntwort"/>
+  <element name="GetAnlageEegSpeicherRequest" type="mastr:GetAnlageEegSpeicherParameter"/>
+  <element name="GetAnlageEegSpeicherResponse" type="mastr:GetAnlageEegSpeicherAntwort"/>
+  <element name="GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest" type="mastr:GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannungParameter"/>
+  <element name="GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse" type="mastr:GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannungAntwort"/>
+  <element name="GetAnlageKwkRequest" type="mastr:GetAnlageKwkParameter"/>
+  <element name="GetAnlageKwkResponse" type="mastr:GetAnlageKwkAntwort"/>
+  <!-- 6.8 Lokation-Funktionen -->
+  <element name="GetListeAlleLokationenRequest" type="mastr:GetListeAlleLokationenParameter"/>
+  <element name="GetListeAlleLokationenResponse" type="mastr:GetListeAlleLokationenAntwort"/>
+  <element name="GetListeFreigegebeneLokationenRequest" type="mastr:GetListeFreigegebeneLokationenParameter"/>
+  <element name="GetListeFreigegebeneLokationenResponse" type="mastr:GetListeFreigegebeneLokationenAntwort"/>
+  <element name="GetLokationStromErzeugerRequest" type="mastr:GetLokationStromErzeugerParameter"/>
+  <element name="GetLokationStromErzeugerResponse" type="mastr:GetLokationStromErzeugerAntwort"/>
+  <element name="GetLokationStromVerbraucherRequest" type="mastr:GetLokationStromVerbraucherParameter"/>
+  <element name="GetLokationStromVerbraucherResponse" type="mastr:GetLokationStromVerbraucherAntwort"/>
+  <element name="GetLokationGasErzeugerRequest" type="mastr:GetLokationGasErzeugerParameter"/>
+  <element name="GetLokationGasErzeugerResponse" type="mastr:GetLokationGasErzeugerAntwort"/>
+  <element name="GetLokationGasVerbraucherRequest" type="mastr:GetLokationGasVerbraucherParameter"/>
+  <element name="GetLokationGasVerbraucherResponse" type="mastr:GetLokationGasVerbraucherAntwort"/>
+
+  <!-- 6.10 Erweiterte -->
+  <element name="GetGefilterteListeStromErzeugerRequest" type="mastr:GetGefilterteListeStromErzeugerParameter"/>
+  <element name="GetGefilterteListeStromErzeugerResponse" type="mastr:GetGefilterteListeStromErzeugerAntwort"/>
+  <element name="GetGefilterteListeStromVerbraucherRequest" type="mastr:GetGefilterteListeStromVerbraucherParameter"/>
+  <element name="GetGefilterteListeStromVerbraucherResponse" type="mastr:GetGefilterteListeStromVerbraucherAntwort"/>
+  <element name="GetGefilterteListeGasErzeugerRequest" type="mastr:GetGefilterteListeGasErzeugerParameter"/>
+  <element name="GetGefilterteListeGasErzeugerResponse" type="mastr:GetGefilterteListeGasErzeugerAntwort"/>
+  <element name="GetGefilterteListeGasVerbraucherRequest" type="mastr:GetGefilterteListeGasVerbraucherParameter"/>
+  <element name="GetGefilterteListeGasVerbraucherResponse" type="mastr:GetGefilterteListeGasVerbraucherAntwort"/>
+  <element name="GetGefilterteListeLokationenStromErzeugerRequest" type="mastr:GetGefilterteListeLokationenStromErzeugerParameter"/>
+  <element name="GetGefilterteListeLokationenStromErzeugerResponse" type="mastr:GetGefilterteListeLokationenStromErzeugerAntwort"/>
+  <element name="GetGefilterteListeLokationenStromVerbraucherRequest" type="mastr:GetGefilterteListeLokationenStromVerbraucherParameter"/>
+  <element name="GetGefilterteListeLokationenStromVerbraucherResponse" type="mastr:GetGefilterteListeLokationenStromVerbraucherAntwort"/>
+  <element name="GetGefilterteListeLokationenGasErzeugerRequest" type="mastr:GetGefilterteListeLokationenGasErzeugerParameter"/>
+  <element name="GetGefilterteListeLokationenGasErzeugerResponse" type="mastr:GetGefilterteListeLokationenGasErzeugerAntwort"/>
+  <element name="GetGefilterteListeLokationenGasVerbraucherRequest" type="mastr:GetGefilterteListeLokationenGasVerbraucherParameter"/>
+  <element name="GetGefilterteListeLokationenGasVerbraucherResponse" type="mastr:GetGefilterteListeLokationenGasVerbraucherAntwort"/>
+</schema>

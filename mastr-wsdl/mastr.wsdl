@@ -1,0 +1,3287 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:mastr="https://www.marktstammdatenregister.de/Services/Public/1_2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Marktstammdatenregister" targetNamespace="https://www.marktstammdatenregister.de/Services/Public/1_2" xmlns:mastrcommon="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Common" xmlns:mastrakteur="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Akteur" xmlns:mastrnetzbetreiberpruefung="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Netzbetreiberpruefung" xmlns:mastranlage="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Anlage" xmlns:mastrnetzanschlusspunkt="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Netzanschlusspunkt" xmlns:p="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Common" schemaLocation="../xsd/mastrservicetypes_common.xsd"/>
+      <xsd:import namespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Akteur" schemaLocation="../xsd/mastrservicetypes_akteur.xsd"/>
+      <xsd:import namespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Netzbetreiberpruefung" schemaLocation="../xsd/mastrservicetypes_netzbetreiberpruefung.xsd"/>
+      <xsd:import namespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Anlage" schemaLocation="../xsd/mastrservicetypes_anlage.xsd"/>
+      <xsd:import namespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Netzanschlusspunkt" schemaLocation="../xsd/mastrservicetypes_netzanschlusspunkt.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLokaleUhrzeitRequest">
+    <wsdl:part name="parametersI" element="mastrcommon:GetLokaleUhrzeitRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokaleUhrzeitResponse">
+    <wsdl:part name="parametersO" element="mastrcommon:GetLokaleUhrzeitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokaleUhrzeitMitAuthentifizierungRequest">
+    <wsdl:part name="parametersI" element="mastrcommon:GetLokaleUhrzeitMitAuthentifizierungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokaleUhrzeitMitAuthentifizierungResponse">
+    <wsdl:part name="parametersO" element="mastrcommon:GetLokaleUhrzeitMitAuthentifizierungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeKatalogkategorienRequest">
+    <wsdl:part name="parametersI" element="mastrcommon:GetListeKatalogkategorienRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeKatalogkategorienResponse">
+    <wsdl:part name="parametersO" element="mastrcommon:GetListeKatalogkategorienResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKatalogwerteRequest">
+    <wsdl:part name="parametersI" element="mastrcommon:GetKatalogwerteRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKatalogwerteResponse">
+    <wsdl:part name="parametersO" element="mastrcommon:GetKatalogwerteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetBilanzierungsgebieteRequest">
+    <wsdl:part name="parametersI" element="mastrcommon:GetBilanzierungsgebieteRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetBilanzierungsgebieteResponse">
+    <wsdl:part name="parametersO" element="mastrcommon:GetBilanzierungsgebieteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAktuellerStandTageskontingentRequest">
+    <wsdl:part name="parametersI" element="mastrcommon:GetAktuellerStandTageskontingentRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetAktuellerStandTageskontingentResponse">
+    <wsdl:part name="parametersO" element="mastrcommon:GetAktuellerStandTageskontingentResponse"/>
+  </wsdl:message>
+  <!-- 6.5 Marktakteur-Funktionen -->
+  <wsdl:message name="GetListeAlleMarktakteureRequest">
+    <wsdl:part name="parametersI" element="mastrakteur:GetListeAlleMarktakteureRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeAlleMarktakteureResponse">
+    <wsdl:part name="parametersO" element="mastrakteur:GetListeAlleMarktakteureResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeFreigegebeneMarktakteureRequest">
+    <wsdl:part name="parametersI" element="mastrakteur:GetListeFreigegebeneMarktakteureRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeFreigegebeneMarktakteureResponse">
+    <wsdl:part name="parametersO" element="mastrakteur:GetListeFreigegebeneMarktakteureResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetMarktakteurRequest">
+    <wsdl:part name="parametersI" element="mastrakteur:GetMarktakteurRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetMarktakteurResponse">
+    <wsdl:part name="parametersO" element="mastrakteur:GetMarktakteurResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetMeineMarktakteureRequest">
+    <wsdl:part name="parametersI" element="mastrakteur:GetMeineMarktakteureRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetMeineMarktakteureResponse">
+    <wsdl:part name="parametersO" element="mastrakteur:GetMeineMarktakteureResponse"/>
+  </wsdl:message>
+  <!-- 6.6 Einheiten-Funktionen -->
+    <wsdl:message name="GetListeLetzteAktualisierungRequest">
+    <wsdl:part name="parametersO" element="mastranlage:GetListeLetzteAktualisierungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeLetzteAktualisierungResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetListeLetzteAktualisierungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeAlleEinheitenRequest">
+    <wsdl:part name="parametersO" element="mastranlage:GetListeAlleEinheitenRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeAlleEinheitenResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetListeAlleEinheitenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeFreigegebeneEinheitenRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetListeFreigegebeneEinheitenRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeFreigegebeneEinheitenResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetListeFreigegebeneEinheitenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeGeloeschteUndDeaktivierteEinheitenRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetListeGeloeschteUndDeaktivierteEinheitenRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeGeloeschteUndDeaktivierteEinheitenResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetListeGeloeschteUndDeaktivierteEinheitenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitWindRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitWindRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitWindResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitWindResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitSolarRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitSolarRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitSolarResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitSolarResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitBiomasseRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitBiomasseRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitBiomasseResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitBiomasseResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitWasserRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitWasserRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitWasserResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitWasserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitVerbrennungRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitVerbrennungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitVerbrennungResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitVerbrennungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitKernkraftRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitKernkraftRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitKernkraftResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitKernkraftResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitStromSpeicherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitStromSpeicherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitStromSpeicherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitStromSpeicherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitStromVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitStromVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitStromVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitStromVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitGasErzeugerRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitGasErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitGasErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitGasErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitGasSpeicherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitGasSpeicherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitGasSpeicherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitGasSpeicherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitGasVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitGasVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitGasVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitGasVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitGenehmigungRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetEinheitGenehmigungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetEinheitGenehmigungResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetEinheitGenehmigungResponse"/>
+  </wsdl:message>
+  <!-- 6.7 Einheitengruppierungsobjekte -->
+  <wsdl:message name="GetStromSpeicherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetStromSpeicherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetStromSpeicherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetStromSpeicherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetGasSpeicherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetGasSpeicherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetGasSpeicherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetGasSpeicherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegWindRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetAnlageEegWindRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegWindResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetAnlageEegWindResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegSolarRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetAnlageEegSolarRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegSolarResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetAnlageEegSolarResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegBiomasseRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetAnlageEegBiomasseRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegBiomasseResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetAnlageEegBiomasseResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegWasserRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetAnlageEegWasserRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegWasserResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetAnlageEegWasserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegSpeicherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetAnlageEegSpeicherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegSpeicherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetAnlageEegSpeicherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageKwkRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetAnlageKwkRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetAnlageKwkResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetAnlageKwkResponse"/>
+  </wsdl:message>
+  <!-- 6.8 Lokation-Funktionen -->
+  <wsdl:message name="GetListeAlleLokationenRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetListeAlleLokationenRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeAlleLokationenResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetListeAlleLokationenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeFreigegebeneLokationenRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetListeFreigegebeneLokationenRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeFreigegebeneLokationenResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetListeFreigegebeneLokationenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokationStromErzeugerRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetLokationStromErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokationStromErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetLokationStromErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokationStromVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetLokationStromVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokationStromVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetLokationStromVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokationGasErzeugerRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetLokationGasErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokationGasErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetLokationGasErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokationGasVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetLokationGasVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetLokationGasVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetLokationGasVerbraucherResponse"/>
+  </wsdl:message>
+  <!-- 6.9 Netzbetreiberprüfung-Funktionen -->
+  <wsdl:message name="GetListeMeineNetzbetreiberpruefungenRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetListeMeineNetzbetreiberpruefungenRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeMeineNetzbetreiberpruefungenResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetListeMeineNetzbetreiberpruefungenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ErneuteNetzbetreiberpruefungStartenRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:ErneuteNetzbetreiberpruefungStartenRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ErneuteNetzbetreiberpruefungStartenResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:ErneuteNetzbetreiberpruefungStartenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzanschlusspunktStromErzeugerRequest">
+    <wsdl:part name="parametersI" element="mastrnetzanschlusspunkt:SetNetzanschlusspunktStromErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzanschlusspunktStromErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastrnetzanschlusspunkt:SetNetzanschlusspunktStromErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzanschlusspunktStromVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastrnetzanschlusspunkt:SetNetzanschlusspunktStromVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzanschlusspunktStromVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastrnetzanschlusspunkt:SetNetzanschlusspunktStromVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzanschlusspunktGasErzeugerRequest">
+    <wsdl:part name="parametersI" element="mastrnetzanschlusspunkt:SetNetzanschlusspunktGasErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzanschlusspunktGasErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastrnetzanschlusspunkt:SetNetzanschlusspunktGasErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzanschlusspunktGasVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastrnetzanschlusspunkt:SetNetzanschlusspunktGasVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzanschlusspunktGasVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastrnetzanschlusspunkt:SetNetzanschlusspunktGasVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteNetzanschlusspunktRequest">
+    <wsdl:part name="parametersI" element="mastrnetzanschlusspunkt:DeleteNetzanschlusspunktRequest"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteNetzanschlusspunktResponse">
+    <wsdl:part name="parametersO" element="mastrnetzanschlusspunkt:DeleteNetzanschlusspunktResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeMeineNetzanschlusspunkteRequest">
+    <wsdl:part name="parametersI" element="mastrnetzanschlusspunkt:GetListeMeineNetzanschlusspunkteRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeMeineNetzanschlusspunkteResponse">
+    <wsdl:part name="parametersO" element="mastrnetzanschlusspunkt:GetListeMeineNetzanschlusspunkteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeAlleNetzanschlusspunkteRequest">
+    <wsdl:part name="parametersI" element="mastrnetzanschlusspunkt:GetListeAlleNetzanschlusspunkteRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetListeAlleNetzanschlusspunkteResponse">
+    <wsdl:part name="parametersO" element="mastrnetzanschlusspunkt:GetListeAlleNetzanschlusspunkteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="VerschiebeEinheitZuAndererLokationRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:VerschiebeEinheitZuAndererLokationRequest"/>
+  </wsdl:message>
+  <wsdl:message name="VerschiebeEinheitZuAndererLokationResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:VerschiebeEinheitZuAndererLokationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="VerschiebeEinheitZuNeuerLokationRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:VerschiebeEinheitZuNeuerLokationRequest"/>
+  </wsdl:message>
+  <wsdl:message name="VerschiebeEinheitZuNeuerLokationResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:VerschiebeEinheitZuNeuerLokationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzbetreiberpruefungAbgeschlossenRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetNetzbetreiberpruefungAbgeschlossenRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzbetreiberpruefungAbgeschlossenResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetNetzbetreiberpruefungAbgeschlossenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetDatenkorrekturErforderlichRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetDatenkorrekturErforderlichRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetDatenkorrekturErforderlichResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetDatenkorrekturErforderlichResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzbetreiberNichtZustaendigRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetNetzbetreiberNichtZustaendigRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetNetzbetreiberNichtZustaendigResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetNetzbetreiberNichtZustaendigResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKlaerungErforderlichRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKlaerungErforderlichRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKlaerungErforderlichResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKlaerungErforderlichResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetStilllegungAbgelehntRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetStilllegungAbgelehntRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetStilllegungAbgelehntResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetStilllegungAbgelehntResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetAntragAufFristverlaengerungRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetAntragAufFristverlaengerungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetAntragAufFristverlaengerungResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetAntragAufFristverlaengerungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RuecknahmeFristverlaengerungRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:RuecknahmeFristverlaengerungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="RuecknahmeFristverlaengerungResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:RuecknahmeFristverlaengerungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitWindRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitWindRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitWindResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitWindResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitAnlagenbetreiberRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitAnlagenbetreiberRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitAnlagenbetreiberResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitAnlagenbetreiberResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitSolarRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitSolarRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitSolarResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitSolarResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitBiomasseRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitBiomasseRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitBiomasseResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitBiomasseResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitWasserRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitWasserRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitWasserResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitWasserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitVerbrennungRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitVerbrennungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitVerbrennungResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitVerbrennungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitGasSpeicherRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitGasSpeicherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitGasSpeicherResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitGasSpeicherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitStromVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitStromVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitStromVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitStromVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitGasErzeugerRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitGasErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitGasErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitGasErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitGasVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitGasVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitGasVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitGasVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitStromSpeicherRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitStromSpeicherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="SetKorrekturVorschlagEinheitStromSpeicherResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:SetKorrekturVorschlagEinheitStromSpeicherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitWindRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitWindRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitWindResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitWindResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitAnlagenbetreiberRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitAnlagenbetreiberRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitAnlagenbetreiberResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitAnlagenbetreiberResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitSolarRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitSolarRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitSolarResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitSolarResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitBiomasseRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitBiomasseRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitBiomasseResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitBiomasseResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitWasserRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitWasserRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitWasserResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitWasserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitVerbrennungRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitVerbrennungRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitVerbrennungResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitVerbrennungResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitGasSpeicherRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitGasSpeicherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitGasSpeicherResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitGasSpeicherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitStromVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitStromVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitStromVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitStromVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitGasErzeugerRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitGasErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitGasErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitGasErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitGasVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitGasVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitGasVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitGasVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitStromSpeicherRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitStromSpeicherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetKorrekturVorschlagEinheitStromSpeicherResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:GetKorrekturVorschlagEinheitStromSpeicherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteKorrekturvorschlagRequest">
+    <wsdl:part name="parametersI" element="mastrnetzbetreiberpruefung:DeleteKorrekturvorschlagRequest"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteKorrekturvorschlagResponse">
+    <wsdl:part name="parametersO" element="mastrnetzbetreiberpruefung:DeleteKorrekturvorschlagResponse"/>
+  </wsdl:message>
+  <!-- 6.10 Erweiterte -->
+  <wsdl:message name="GetGefilterteListeMarktakteureRequest">
+    <wsdl:part name="parametersI" element="mastrakteur:GetGefilterteListeMarktakteureRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeMarktakteureResponse">
+    <wsdl:part name="parametersO" element="mastrakteur:GetGefilterteListeMarktakteureResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeStromErzeugerRequest">
+    <wsdl:part name="parametersO" element="mastranlage:GetGefilterteListeStromErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeStromErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetGefilterteListeStromErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeStromVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetGefilterteListeStromVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeStromVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetGefilterteListeStromVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeGasErzeugerRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetGefilterteListeGasErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeGasErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetGefilterteListeGasErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeGasVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetGefilterteListeGasVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeGasVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetGefilterteListeGasVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeLokationenStromErzeugerRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetGefilterteListeLokationenStromErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeLokationenStromErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetGefilterteListeLokationenStromErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeLokationenStromVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetGefilterteListeLokationenStromVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeLokationenStromVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetGefilterteListeLokationenStromVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeLokationenGasErzeugerRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetGefilterteListeLokationenGasErzeugerRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeLokationenGasErzeugerResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetGefilterteListeLokationenGasErzeugerResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeLokationenGasVerbraucherRequest">
+    <wsdl:part name="parametersI" element="mastranlage:GetGefilterteListeLokationenGasVerbraucherRequest"/>
+  </wsdl:message>
+  <wsdl:message name="GetGefilterteListeLokationenGasVerbraucherResponse">
+    <wsdl:part name="parametersO" element="mastranlage:GetGefilterteListeLokationenGasVerbraucherResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="AllgemeineFunktionen">
+    <!-- 6.4 Allgemeine -->
+    <wsdl:operation name="GetLokaleUhrzeit">
+      <wsdl:documentation>Diese Funktion dient zum Testen der Verbindung
+        von einem Client zu dem Webdienst des Marktstammdatenregisters.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetLokaleUhrzeitRequest"/>
+      <wsdl:output message="mastr:GetLokaleUhrzeitResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokaleUhrzeitMitAuthentifizierung">
+      <wsdl:documentation>Diese Funktion dient zum Testen der Verbindung
+        von einem Client zu dem Webdienst des Marktstammdatenregisters.
+        Über die Webdienst-Schlüssel Angabe kann die Authentifizierung
+        überprüft werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetLokaleUhrzeitMitAuthentifizierungRequest"/>
+      <wsdl:output message="mastr:GetLokaleUhrzeitMitAuthentifizierungResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeKatalogkategorien">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        verfügbaren Kategorien des dynamischen MaStR-Katalogs. Nicht
+        alle Kataloge sind statisch und damit als Enumerationen
+        abgebildet. Ein Teil der Kataloge sind dynamisch. Durch diese
+        Funktion können die verfügbaren Katalogkategorien abgerufen
+        werden. Mit diesen Angaben können über die Funktion
+        „GetKatalogwerte“ die Werte zu den Kategorien abgerufen werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeKatalogkategorienRequest"/>
+      <wsdl:output message="mastr:GetListeKatalogkategorienResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKatalogwerte">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        verfügbaren Werte der gewünschten Kategorie des dynamischen
+        MaStR-Katalogs. Dieser Katalog ist eine kategorisierte Sammlung
+        von Schlüssel-Werte-Paaren.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKatalogwerteRequest"/>
+      <wsdl:output message="mastr:GetKatalogwerteResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetBilanzierungsgebiete">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Bilanzierungsgebiete des angegebenen Marktakteurs.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetBilanzierungsgebieteRequest"/>
+      <wsdl:output message="mastr:GetBilanzierungsgebieteResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAktuellerStandTageskontingent">
+      <wsdl:documentation>Diese Funktion liefert den aktuellen Stand des
+        Abrufzählers des Tageskontingents für den Marktakteur, dem der
+        Benutzer des angegebenen Webdienst-Schlüssels zugeordnet ist.
+        Ist kein Kontingent festgelegt, wird -1 zurückgegeben.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetAktuellerStandTageskontingentRequest"/>
+      <wsdl:output message="mastr:GetAktuellerStandTageskontingentResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Akteur">
+    <!-- 6.10 Erweiterte -->
+    <wsdl:operation name="GetGefilterteListeMarktakteure">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit öffentlichen Marktakteuren, die der Suchanfrage
+        entsprechen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetGefilterteListeMarktakteureRequest"/>
+      <wsdl:output message="mastr:GetGefilterteListeMarktakteureResponse"/>
+    </wsdl:operation>
+    <!-- 6.5 Marktakteur-Funktionen -->
+    <wsdl:operation name="GetListeAlleMarktakteure">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit allen öffentlichen Marktakteuren. Es können nur
+        aktive, legitimierte Marktakteure abgerufen werden, die keine
+        Privatpersonen sind.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeAlleMarktakteureRequest"/>
+      <wsdl:output message="mastr:GetListeAlleMarktakteureResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeFreigegebeneMarktakteure">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste der Marktakteure, für die der aufrufende Marktakteur eine
+        Datenfreigabe besitzt.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeFreigegebeneMarktakteureRequest"/>
+      <wsdl:output message="mastr:GetListeFreigegebeneMarktakteureResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarktakteur">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen von
+        Informationen zu einem Marktakteur. Es werden nur öffentlich
+        zugängliche Daten von aktiven und legitimierten Marktakteuren
+        übermittelt. Es können auch Daten von Marktakteuren abgerufen
+        werden, für die der abrufende Marktakteur eine gültige
+        Datenfreigabe besitzt. Das Abrufen von Informationen von
+        privaten Marktakteuren (natürlichen Personen) ist nicht möglich.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetMarktakteurRequest"/>
+      <wsdl:output message="mastr:GetMarktakteurResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetMeineMarktakteure">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste der eigenen und nicht gelöschten Marktakteure, denen der
+        Benutzer zugeordnet ist. Die Funktion übergibt auch die
+        deaktivierten Marktakteure, denen der Benutzer zugeordnet ist
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetMeineMarktakteureRequest"/>
+      <wsdl:output message="mastr:GetMeineMarktakteureResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Anlage">
+    <!-- 6.6 Einheiten-Funktionen -->
+	    <wsdl:operation name="GetListeLetzteAktualisierung">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit Einheiten und Objekten und deren Aktualisierungsdaten.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeLetzteAktualisierungRequest"/>
+      <wsdl:output message="mastr:GetListeLetzteAktualisierungResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeAlleEinheiten">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit allen aktiven, öffentlich sichtbaren Einheiten.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeAlleEinheitenRequest"/>
+      <wsdl:output message="mastr:GetListeAlleEinheitenResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeFreigegebeneEinheiten">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit allen Einheiten, bei denen der Marktakteur Betreiber
+        ist oder für die der Marktakteur auf Grund von Datenfreigaben
+        eine Leseberechtigung besitzt. Dies ist gegeben, wenn ihm
+        mindestens eines der Geheimnisfelder der Einheit über eine
+        Datenfreigabe freigegeben wurde.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeFreigegebeneEinheitenRequest"/>
+      <wsdl:output message="mastr:GetListeFreigegebeneEinheitenResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="GetListeGeloeschteUndDeaktivierteEinheiten">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit gelöschten Einheiten.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeGeloeschteUndDeaktivierteEinheitenRequest"/>
+      <wsdl:output message="mastr:GetListeGeloeschteUndDeaktivierteEinheitenResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitWind">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit der Art „Wind“. Es können alle
+        öffentlichen Felder einer Einheit abgerufen werden. Für die
+        nichtöffentlichen Einheiten oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitWindRequest"/>
+      <wsdl:output message="mastr:GetEinheitWindResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitSolar">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit der Art „Solar“. Es können alle
+        öffentlichen Felder einer Einheit abgerufen werden. Für die
+        nichtöffentlichen Einheiten oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitSolarRequest"/>
+      <wsdl:output message="mastr:GetEinheitSolarResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitBiomasse">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit der Art „Biomasse“. Es können alle
+        öffentlichen Felder einer Einheit abgerufen werden. Für die
+        nichtöffentlichen Einheiten oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitBiomasseRequest"/>
+      <wsdl:output message="mastr:GetEinheitBiomasseResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitWasser">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit der Art „Wasser“. Es können alle
+        öffentlichen Felder einer Einheit abgerufen werden. Für die
+        nichtöffentlichen Einheiten oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitWasserRequest"/>
+      <wsdl:output message="mastr:GetEinheitWasserResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit der Art „Geo-, Solarthermie, Grubengas,
+        Klärschlamm“. Es können alle öffentlichen Felder einer Einheit
+        abgerufen werden. Für die nichtöffentlichen Einheiten oder
+        Datenfelder bedarf es einer separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest"/>
+      <wsdl:output message="mastr:GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitVerbrennung">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit der Art „Verbrennung“. Es können alle
+        öffentlichen Felder einer Einheit abgerufen werden. Für die
+        nichtöffentlichen Einheiten oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitVerbrennungRequest"/>
+      <wsdl:output message="mastr:GetEinheitVerbrennungResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitKernkraft">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit der Art „Kernkraft“. Es können alle
+        öffentlichen Felder einer Einheit abgerufen werden. Für die
+        nichtöffentlichen Einheiten oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitKernkraftRequest"/>
+      <wsdl:output message="mastr:GetEinheitKernkraftResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitStromSpeicher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit der Art „Speicher“. Es können alle
+        öffentlichen Felder einer Anlage abgerufen werden. Für die
+        nichtöffentlichen Anlagen oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitStromSpeicherRequest"/>
+      <wsdl:output message="mastr:GetEinheitStromSpeicherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitStromVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit der Art „Stromverbraucher“. Es können
+        alle öffentlichen Felder einer Einheit abgerufen werden. Für die
+        nichtöffentlichen Einheiten oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitStromVerbraucherRequest"/>
+      <wsdl:output message="mastr:GetEinheitStromVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGasErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit des Typs „Gaserzeuger“. Es können alle
+        öffentlichen Felder einer Einheit abgerufen werden. Für die
+        nichtöffentlichen Einheiten oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitGasErzeugerRequest"/>
+      <wsdl:output message="mastr:GetEinheitGasErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGasSpeicher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit des Typs „Gasspeicher“. Es können alle
+        öffentlichen Felder einer Einheit abgerufen werden. Für die
+        nichtöffentlichen Einheiten oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitGasSpeicherRequest"/>
+      <wsdl:output message="mastr:GetEinheitGasSpeicherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGasVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Einheit des Typs „Gasverbraucher“. Es können alle
+        öffentlichen Felder einer Einheit abgerufen werden. Für die
+        nichtöffentlichen Einheiten oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitGasVerbraucherRequest"/>
+      <wsdl:output message="mastr:GetEinheitGasVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGenehmigung">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Genehmigung.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetEinheitGenehmigungRequest"/>
+      <wsdl:output message="mastr:GetEinheitGenehmigungResponse"/>
+    </wsdl:operation>
+    <!-- 6.7 Einheitengruppierungsobjekte -->
+    <wsdl:operation name="GetStromSpeicher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für einen Stromspeicher. Es können alle öffentlichen
+        Felder eines Speichers abgerufen werden. Für die
+        nichtöffentlichen Speicher oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetStromSpeicherRequest"/>
+      <wsdl:output message="mastr:GetStromSpeicherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGasSpeicher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für einen Gasspeicher. Es können alle öffentlichen Felder
+        eines Speichers abgerufen werden. Für die nichtöffentlichen
+        Speicher oder Datenfelder bedarf es einer separaten
+        Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetGasSpeicherRequest"/>
+      <wsdl:output message="mastr:GetGasSpeicherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegWind">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine EEG-Anlage des Typs „Wind“. Eine EEG Wind Anlage
+        ist im Verhältnis 1:1 mit einer Einheit verknüpft. Es können
+        alle öffentlichen Felder einer Anlage abgerufen werden. Für die
+        nichtöffentlichen Anlagen oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetAnlageEegWindRequest"/>
+      <wsdl:output message="mastr:GetAnlageEegWindResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegSolar">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine EEG-Anlage des Typs „Solar“. Eine EEG Solar
+        Anlage ist im Verhältnis 1:1 mit einer Einheit verknüpft. Es
+        können alle öffentlichen Felder einer Anlage abgerufen werden.
+        Für die nichtöffentlichen Anlagen oder Datenfelder bedarf es
+        einer separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetAnlageEegSolarRequest"/>
+      <wsdl:output message="mastr:GetAnlageEegSolarResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegBiomasse">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine EEG-Anlage des Typs „Biomasse“. Eine EEG Biomasse
+        Anlage ist im Verhältnis 1:n mit Einheiten verknüpft. Es können
+        alle öffentlichen Felder einer Anlage abgerufen werden. Für die
+        nichtöffentlichen Anlagen oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetAnlageEegBiomasseRequest"/>
+      <wsdl:output message="mastr:GetAnlageEegBiomasseResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegWasser">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine EEG-Anlage des Typs „Wasser“. Eine EEG Wasser
+        Anlage ist im Verhältnis 1:n mit Einheiten verknüpft. Es können
+        alle öffentlichen Felder einer Anlage abgerufen werden. Für die
+        nichtöffentlichen Anlagen oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetAnlageEegWasserRequest"/>
+      <wsdl:output message="mastr:GetAnlageEegWasserResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegSpeicher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine EEG-Anlage des Typs „Speicher“. Eine EEG Speicher
+        Anlage ist im Verhältnis 1:1 mit Einheiten verknüpft. Es können
+        alle öffentlichen Felder einer Anlage abgerufen werden. Für die
+        nichtöffentlichen Anlagen oder Datenfelder bedarf es einer
+        separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetAnlageEegSpeicherRequest"/>
+      <wsdl:output message="mastr:GetAnlageEegSpeicherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine EEG-Anlage des Typs „Geo-, Solarthermie –
+        Gruben-, Klärschlamm“. Eine EEG Geo-, Solarthermie – Gruben-,
+        Klärschlamm Anlage ist im Verhältnis 1:n mit Einheiten
+        verknüpft. Es können alle öffentlichen Felder einer Anlage
+        abgerufen werden. Für die nichtöffentlichen Anlagen oder
+        Datenfelder bedarf es einer separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest"/>
+      <wsdl:output message="mastr:GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageKwk">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine KWK-Anlage. Eine KWK-Anlage ist im Verhältnis 1:n
+        mit Einheiten verknüpft. Es können alle öffentlichen Felder
+        einer Anlage abgerufen werden. Für die nichtöffentlichen Anlagen
+        oder Datenfelder bedarf es einer separaten Datenfreigabe.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetAnlageKwkRequest"/>
+      <wsdl:output message="mastr:GetAnlageKwkResponse"/>
+    </wsdl:operation>
+    <!-- 6.8 Lokation-Funktionen -->
+    <wsdl:operation name="GetListeAlleLokationen">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit allen aktiven, öffentlich sichtbaren Lokationen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeAlleLokationenRequest"/>
+      <wsdl:output message="mastr:GetListeAlleLokationenResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeFreigegebeneLokationen">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit allen Lokationen, bei denen der Marktakteur Betreiber
+        mindestens einer Einheit ist oder bei denen der Marktakteur, auf
+        Grund seiner Zuordnung als Anschlussnetzbetreiber oder im
+        Allgemeinen eine Datenfreigabe erhalten hat.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeFreigegebeneLokationenRequest"/>
+      <wsdl:output message="mastr:GetListeFreigegebeneLokationenResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationStromErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Lokation des Typs „Stromerzeuger“.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetLokationStromErzeugerRequest"/>
+      <wsdl:output message="mastr:GetLokationStromErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationStromVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Lokation des Typs „Stromverbraucher“.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetLokationStromVerbraucherRequest"/>
+      <wsdl:output message="mastr:GetLokationStromVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationGasErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Lokation des Typs „Gaserzeuger“.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetLokationGasErzeugerRequest"/>
+      <wsdl:output message="mastr:GetLokationGasErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationGasVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen der
+        Daten für eine Lokation des Typs „Gasverbraucher“.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetLokationGasVerbraucherRequest"/>
+      <wsdl:output message="mastr:GetLokationGasVerbraucherResponse"/>
+    </wsdl:operation>
+    <!-- 6.10 Erweiterte -->
+    <wsdl:operation name="GetGefilterteListeStromErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit Einheiten, die der Suchanfrage entsprechen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetGefilterteListeStromErzeugerRequest"/>
+      <wsdl:output message="mastr:GetGefilterteListeStromErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeStromVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit Einheiten, die der Suchanfrage entsprechen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetGefilterteListeStromVerbraucherRequest"/>
+      <wsdl:output message="mastr:GetGefilterteListeStromVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeGasErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit Einheiten, die der Suchanfrage entsprechen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetGefilterteListeGasErzeugerRequest"/>
+      <wsdl:output message="mastr:GetGefilterteListeGasErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeGasVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit Einheiten, die der Suchanfrage entsprechen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetGefilterteListeGasVerbraucherRequest"/>
+      <wsdl:output message="mastr:GetGefilterteListeGasVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenStromErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit Lokationen, die der Suchanfrage entsprechen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetGefilterteListeLokationenStromErzeugerRequest"/>
+      <wsdl:output message="mastr:GetGefilterteListeLokationenStromErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenStromVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit Lokationen, die der Suchanfrage entsprechen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetGefilterteListeLokationenStromVerbraucherRequest"/>
+      <wsdl:output message="mastr:GetGefilterteListeLokationenStromVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenGasErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit Lokationen, die der Suchanfrage entsprechen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetGefilterteListeLokationenGasErzeugerRequest"/>
+      <wsdl:output message="mastr:GetGefilterteListeLokationenGasErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenGasVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen einer
+        Liste mit Lokationen, die der Suchanfrage entsprechen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetGefilterteListeLokationenGasVerbraucherRequest"/>
+      <wsdl:output message="mastr:GetGefilterteListeLokationenGasVerbraucherResponse"/>
+    </wsdl:operation>
+
+  </wsdl:portType>
+  <wsdl:portType name="Netzbetreiberpruefung">
+    <!-- 6.9 Netzbetreiberprüfung-Funktionen -->
+    <wsdl:operation name="GetListeMeineNetzbetreiberpruefungen">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen von
+        Netzbetreiberprüfungen für einen angegebenen Netzbetreiber. Mit
+        dem „DatumAb“ kann die Ausgabe eingeschränkt werden. Es werden
+        in diesem Fall nur die Objekte geliefert, die ab diesem
+        Zeitpunkt erstellt oder geändert wurden. Wird kein Datum
+        angegeben, erfolgt eine komplette Auslieferung der Daten.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeMeineNetzbetreiberpruefungenRequest"/>
+      <wsdl:output message="mastr:GetListeMeineNetzbetreiberpruefungenResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="ErneuteNetzbetreiberpruefungStarten">
+      <wsdl:documentation>Diese Funktion ermöglicht das Auslösen 
+	    einer neuen Netzbetreiberprüfung.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:ErneuteNetzbetreiberpruefungStartenRequest"/>
+      <wsdl:output message="mastr:ErneuteNetzbetreiberpruefungStartenResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="VerschiebeEinheitZuAndererLokation">
+      <wsdl:documentation>Diese Funktion ermöglicht das Umhängen einer
+        Einheit an eine bereits bestehende Lokation. Die Ziellokation
+        wird durch eine Einheit identifiziert, die bereits mit der
+        Lokation verknüpft ist. Die alte Lokation und deren mögliche
+        Netzanschlusspunkte werden abschließend entfernt, wenn keine
+        weitere Einheit an der Lokation hängt. Nur der zuständige
+        Netzbetreiber ist in der Lage, diese Funktion aufzurufen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:VerschiebeEinheitZuAndererLokationRequest"/>
+      <wsdl:output message="mastr:VerschiebeEinheitZuAndererLokationResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="VerschiebeEinheitZuNeuerLokation">
+      <wsdl:documentation>Diese Funktion ermöglicht das Umhängen einer
+        Einheit von der aktuell zugeordneten Lokation an eine neue
+        Lokation, die mit dieser Funktion automatisch erstellt wird. Die
+        Einheit wird damit entkoppelt. Dieser Prozess ist Teil der
+        Netzbetreiberprüfung. Die alte Lokation und deren mögliche
+        Netzanschlusspunkte werden abschließend entfernt, wenn keine
+        weitere Einheit an der Lokation hängt.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:VerschiebeEinheitZuNeuerLokationRequest"/>
+      <wsdl:output message="mastr:VerschiebeEinheitZuNeuerLokationResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzbetreiberpruefungAbgeschlossen">
+      <wsdl:documentation>Diese Funktion ermöglicht das Beenden einer
+        Netzbetreiberprüfung. Sie setzt den Status der
+        Netzbetreiberprüfung auf „Netzbetreiberprüfung erfolgreich
+        abgeschlossen“. Der Vorgang ist damit abgeschlossen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetNetzbetreiberpruefungAbgeschlossenRequest"/>
+      <wsdl:output message="mastr:SetNetzbetreiberpruefungAbgeschlossenResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetDatenkorrekturErforderlich">
+      <wsdl:documentation>Diese Funktion ermöglicht die Statussetzung
+        einer Netzbetreiberprüfung, für den Fall, dass Daten nicht
+        korrekt sind und der Dateninhaber zu einer Datenkorrektur
+        aufgefordert werden soll. Sie setzt den Status auf
+        „Datenkorrektur“ und öffnet ein Ticket „Aufforderung zur
+        Datenkorrektur“ für den Anlagenbetreiber. Diese Funktion kann
+        nur aufgerufen werden, wenn mindestens ein Korrekturvorschlag an
+        der angebenen Netzbetreiberprüfung hinterlegt ist. Vorschläge
+        werden über die Funktionen „SetKorrekturvorschlag…“ erfasst und
+        damit an einer Netzbetreiberprüfung hinterlegt.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetDatenkorrekturErforderlichRequest"/>
+      <wsdl:output message="mastr:SetDatenkorrekturErforderlichResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzbetreiberNichtZustaendig">
+      <wsdl:documentation>Diese Funktion ermöglicht die Angabe, dass der
+        Netzbetreiber nicht für diese Netzbetreiberprüfung zuständig
+        ist. Sie setzt den Status der Netzbetreiberprüfung auf
+        „Netzbetreiber nicht zuständig“. Der Vorgang ist damit
+        abgeschlossen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetNetzbetreiberNichtZustaendigRequest"/>
+      <wsdl:output message="mastr:SetNetzbetreiberNichtZustaendigResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKlaerungErforderlich">
+      <wsdl:documentation>Diese Funktion ermöglicht die Angabe, dass der
+        Netzbetreiber diese Prüfung direkt an die Bundesnetzagentur
+        leiten möchte. Dies ist z.B. immer dann der Fall, wenn der
+        Netzbetreiber den Verdacht einer „Falschanmeldung einer Anlage“
+        hat. Setzt den Status „Klärung“ und öffnet ein Ticket
+        „Klärungsprozess BNetzA“ für die Fachadministratoren der
+        Bundesnetzagentur.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKlaerungErforderlichRequest"/>
+      <wsdl:output message="mastr:SetKlaerungErforderlichResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetStilllegungAbgelehnt">
+      <wsdl:documentation>Diese Funktion ermöglicht die Angabe, dass der
+        Netzbetreiber die Registrierung der Stilllegung einer Einheit ablehnt
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetStilllegungAbgelehntRequest"/>
+      <wsdl:output message="mastr:SetStilllegungAbgelehntResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetAntragAufFristverlaengerung">
+      <wsdl:documentation>Diese Funktion ermöglicht die Antragstellung auf Fristverlängerung
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetAntragAufFristverlaengerungRequest"/>
+      <wsdl:output message="mastr:SetAntragAufFristverlaengerungResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="RuecknahmeFristverlaengerung">
+      <wsdl:documentation>Diese Funktion ermöglicht die Rücknahme der Fristverlängerung
+      </wsdl:documentation>
+      <wsdl:input message="mastr:RuecknahmeFristverlaengerungRequest"/>
+      <wsdl:output message="mastr:RuecknahmeFristverlaengerungResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitWind">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitWindRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitWindResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitAnlagenbetreiber">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitAnlagenbetreiberRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitAnlagenbetreiberResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitSolar">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitSolarRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitSolarResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitBiomasse">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitBiomasseRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitBiomasseResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitWasser">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitWasserRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitWasserResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitVerbrennung">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitVerbrennungRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitVerbrennungResponse"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGasSpeicher">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitGasSpeicherRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitGasSpeicherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitStromVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitStromVerbraucherRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitStromVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGasErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitGasErzeugerRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitGasErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGasVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitGasVerbraucherRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitGasVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitStromSpeicher">
+      <wsdl:documentation>Diese Funktion ermöglicht dem Netzbetreiber
+        einen Vorschlag zur Datenänderung, im Rahmen einer
+        Datenkorrekturaufforderung, an den Anlagenbetreiber zu
+        übermitteln. Der Netzbetreiber ändert die Werte in dem Objekt
+        ab, welche nach seiner Kenntnis fehlerhaft sind, und sendet das
+        Objekt als Antwort über diese Funktion. Der Vorschlag muss
+        anschließend mit der Funktion „SetDatenkorrekturErforderlich“
+        übermittelt werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetKorrekturVorschlagEinheitStromSpeicherRequest"/>
+      <wsdl:output message="mastr:SetKorrekturVorschlagEinheitStromSpeicherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitWind">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitWindRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitWindResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitAnlagenbetreiber">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitAnlagenbetreiberRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitAnlagenbetreiberResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitSolar">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitSolarRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitSolarResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitBiomasse">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitBiomasseRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitBiomasseResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitWasser">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitWasserRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitWasserResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannungResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitVerbrennung">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitVerbrennungRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitVerbrennungResponse"/>
+    </wsdl:operation>
+
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGasSpeicher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitGasSpeicherRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitGasSpeicherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitStromVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitStromVerbraucherRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitStromVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGasErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitGasErzeugerRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitGasErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGasVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitGasVerbraucherRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitGasVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitStromSpeicher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen eines
+        Vorschlags zur Datenänderung. Die Funktion kann nur von dem
+        Netzbetreiber ausgeführt werden, der den Vorschlag ursprünglich
+        erstellt hat und der damit ein Teil der Netzbetreiberprüfung
+        ist.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetKorrekturVorschlagEinheitStromSpeicherRequest"/>
+      <wsdl:output message="mastr:GetKorrekturVorschlagEinheitStromSpeicherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteKorrekturvorschlag">
+      <wsdl:documentation>Diese Funktion ermöglicht das Löschen von
+        einem Korrekturvorschlag im Rahmen einer Netzbetreiberprüfung.
+        Nur der zuständige Netzbetreiber ist in der Lage, diese Funktion
+        aufzurufen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:DeleteKorrekturvorschlagRequest"/>
+      <wsdl:output message="mastr:DeleteKorrekturvorschlagResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Netzanschlusspunkt">
+    <wsdl:operation name="SetNetzanschlusspunktStromErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht das Setzen und
+        Ändern von Daten am Netzanschlusspunkt sowie das Erstellen eines
+        Netzanschlusspunkts im Rahmen einer Netzbetreiberprüfung. Nur
+        der zuständige Netzbetreiber ist in der Lage, diese Funktion
+        aufzurufen. Um einen neuen Netzanschlusspunkt zu erstellen, muss
+        der Parameter „netzanschlusspunktMastrNummer“ im Objekt
+        "NetzanschlusspunktStrom" leer gelassen werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetNetzanschlusspunktStromErzeugerRequest"/>
+      <wsdl:output message="mastr:SetNetzanschlusspunktStromErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzanschlusspunktStromVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Setzen von Daten
+        an einem Netzanschlusspunkt im Rahmen einer
+        Netzbetreiberprüfung. Nur der zuständige Netzbetreiber ist in
+        der Lage, diese Funktion aufzurufen. Um einen neuen
+        Netzanschlusspunkt zu erstellen, muss der Parameter
+        „netzanschlusspunktMastrNummer“ im Objekt
+        "NetzanschlusspunktStrom" leer gelassen werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetNetzanschlusspunktStromVerbraucherRequest"/>
+      <wsdl:output message="mastr:SetNetzanschlusspunktStromVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzanschlusspunktGasErzeuger">
+      <wsdl:documentation>Diese Funktion ermöglicht das Setzen von Daten
+        an einem Netzanschlusspunkt im Rahmen einer
+        Netzbetreiberprüfung. Nur der zuständige Netzbetreiber ist in
+        der Lage, diese Funktion aufzurufen. Um einen neuen
+        Netzanschlusspunkt zu erstellen, muss der Parameter
+        „netzanschlusspunktMastrNummer“ im Objekt
+        "NetzanschlusspunktGas" leer gelassen werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetNetzanschlusspunktGasErzeugerRequest"/>
+      <wsdl:output message="mastr:SetNetzanschlusspunktGasErzeugerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzanschlusspunktGasVerbraucher">
+      <wsdl:documentation>Diese Funktion ermöglicht das Setzen von Daten
+        an einem Netzanschlusspunkt im Rahmen einer
+        Netzbetreiberprüfung. Nur der zuständige Netzbetreiber ist in
+        der Lage, diese Funktion aufzurufen. Um einen neuen
+        Netzanschlusspunkt zu erstellen, muss der Parameter
+        „netzanschlusspunktMastrNummer“ im Objekt
+        "NetzanschlusspunktGas" leer gelassen werden.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:SetNetzanschlusspunktGasVerbraucherRequest"/>
+      <wsdl:output message="mastr:SetNetzanschlusspunktGasVerbraucherResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNetzanschlusspunkt">
+      <wsdl:documentation>Diese Funktion ermöglicht das Löschen von
+        einem Netzanschlusspunkt an einer Lokation im Rahmen einer
+        Netzbetreiberprüfung. Nur der zuständige Netzbetreiber ist in
+        der Lage, diese Funktion aufzurufen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:DeleteNetzanschlusspunktRequest"/>
+      <wsdl:output message="mastr:DeleteNetzanschlusspunktResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="GetListeMeineNetzanschlusspunkte">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen von
+        einem Netzanschlusspunkt an einer Lokation im Rahmen einer
+        Netzbetreiberprüfung. Nur der zuständige Netzbetreiber ist in
+        der Lage, diese Funktion aufzurufen.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeMeineNetzanschlusspunkteRequest"/>
+      <wsdl:output message="mastr:GetListeMeineNetzanschlusspunkteResponse"/>
+    </wsdl:operation>
+	<wsdl:operation name="GetListeAlleNetzanschlusspunkte">
+      <wsdl:documentation>Diese Funktion ermöglicht das Abrufen von
+        einem Netzanschlusspunkt an einer Lokation im Rahmen einer
+        Netzbetreiberprüfung.
+      </wsdl:documentation>
+      <wsdl:input message="mastr:GetListeAlleNetzanschlusspunkteRequest"/>
+      <wsdl:output message="mastr:GetListeAlleNetzanschlusspunkteResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Allgemein" type="mastr:AllgemeineFunktionen">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetLokaleUhrzeit">
+      <soap:operation soapAction="GetLokaleUhrzeit"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokaleUhrzeitMitAuthentifizierung">
+      <soap:operation soapAction="GetLokaleUhrzeitMitAuthentifizierung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeKatalogkategorien">
+      <soap:operation soapAction="GetListeKatalogkategorien"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKatalogwerte">
+      <soap:operation soapAction="GetKatalogwerte"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBilanzierungsgebiete">
+      <soap:operation soapAction="GetBilanzierungsgebiete"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAktuellerStandTageskontingent">
+      <soap:operation soapAction="GetAktuellerStandTageskontingent"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Allgemein12" type="mastr:AllgemeineFunktionen">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="GetLokaleUhrzeit">
+      <soap12:operation soapAction="GetLokaleUhrzeit"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokaleUhrzeitMitAuthentifizierung">
+      <soap12:operation soapAction="GetLokaleUhrzeitMitAuthentifizierung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeKatalogkategorien">
+      <soap12:operation soapAction="GetListeKatalogkategorien"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKatalogwerte">
+      <soap12:operation soapAction="GetKatalogwerte"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBilanzierungsgebiete">
+      <soap12:operation soapAction="GetBilanzierungsgebiete"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAktuellerStandTageskontingent">
+      <soap12:operation soapAction="GetAktuellerStandTageskontingent"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Akteur" type="mastr:Akteur">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetListeAlleMarktakteure">
+      <soap:operation soapAction="GetListeAlleMarktakteure"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeFreigegebeneMarktakteure">
+      <soap:operation soapAction="GetListeFreigegebeneMarktakteure"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarktakteur">
+      <soap:operation soapAction="GetMarktakteur"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeMarktakteure">
+      <soap:operation soapAction="GetGefilterteListeMarktakteure"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMeineMarktakteure">
+      <soap:operation soapAction="GetMeineMarktakteure"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Akteur12" type="mastr:Akteur">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="GetListeAlleMarktakteure">
+      <soap12:operation soapAction="GetListeAlleMarktakteure"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeFreigegebeneMarktakteure">
+      <soap12:operation soapAction="GetListeFreigegebeneMarktakteure"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarktakteur">
+      <soap12:operation soapAction="GetMarktakteur"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeMarktakteure">
+      <soap12:operation soapAction="GetGefilterteListeMarktakteure"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMeineMarktakteure">
+      <soap12:operation soapAction="GetMeineMarktakteure"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Netzbetreiberpruefung" type="mastr:Netzbetreiberpruefung">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetListeMeineNetzbetreiberpruefungen">
+      <soap:operation soapAction="GetListeMeineNetzbetreiberpruefungen"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="ErneuteNetzbetreiberpruefungStarten">
+      <soap:operation soapAction="ErneuteNetzbetreiberpruefungStarten"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerschiebeEinheitZuAndererLokation">
+      <soap:operation soapAction="VerschiebeEinheitZuAndererLokation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerschiebeEinheitZuNeuerLokation">
+      <soap:operation soapAction="VerschiebeEinheitZuNeuerLokation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzbetreiberpruefungAbgeschlossen">
+      <soap:operation soapAction="SetNetzbetreiberpruefungAbgeschlossen"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDatenkorrekturErforderlich">
+      <soap:operation soapAction="SetDatenkorrekturErforderlich"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzbetreiberNichtZustaendig">
+      <soap:operation soapAction="SetNetzbetreiberNichtZustaendig"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetStilllegungAbgelehnt">
+      <soap:operation soapAction="SetStilllegungAbgelehnt"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAntragAufFristverlaengerung">
+      <soap:operation soapAction="SetAntragAufFristverlaengerung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RuecknahmeFristverlaengerung">
+      <soap:operation soapAction="RuecknahmeFristverlaengerung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKlaerungErforderlich">
+      <soap:operation soapAction="SetKlaerungErforderlich"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitWind">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitWind"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitAnlagenbetreiber">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitAnlagenbetreiber"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitSolar">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitSolar"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitBiomasse">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitBiomasse"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitWasser">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitWasser"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitVerbrennung">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitVerbrennung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGasSpeicher">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitGasSpeicher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitStromVerbraucher">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitStromVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGasErzeuger">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitGasErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGasVerbraucher">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitGasVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitStromSpeicher">
+      <soap:operation soapAction="SetKorrekturVorschlagEinheitStromSpeicher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitWind">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitWind"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitAnlagenbetreiber">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitAnlagenbetreiber"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitSolar">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitSolar"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitBiomasse">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitBiomasse"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitWasser">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitWasser"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitVerbrennung">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitVerbrennung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitStromVerbraucher">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitStromVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGasErzeuger">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitGasErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGasVerbraucher">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitGasVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitStromSpeicher">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitStromSpeicher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGasSpeicher">
+      <soap:operation soapAction="GetKorrekturVorschlagEinheitGasSpeicher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteKorrekturvorschlag">
+      <soap:operation soapAction="DeleteKorrekturvorschlag"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Netzbetreiberpruefung12" type="mastr:Netzbetreiberpruefung">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="GetListeMeineNetzbetreiberpruefungen">
+      <soap12:operation soapAction="GetListeMeineNetzbetreiberpruefungen"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ErneuteNetzbetreiberpruefungStarten">
+      <soap12:operation soapAction="ErneuteNetzbetreiberpruefungStarten"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerschiebeEinheitZuAndererLokation">
+      <soap12:operation soapAction="VerschiebeEinheitZuAndererLokation"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerschiebeEinheitZuNeuerLokation">
+      <soap12:operation soapAction="VerschiebeEinheitZuNeuerLokation"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzbetreiberpruefungAbgeschlossen">
+      <soap12:operation soapAction="SetNetzbetreiberpruefungAbgeschlossen"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDatenkorrekturErforderlich">
+      <soap12:operation soapAction="SetDatenkorrekturErforderlich"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzbetreiberNichtZustaendig">
+      <soap12:operation soapAction="SetNetzbetreiberNichtZustaendig"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetStilllegungAbgelehnt">
+      <soap12:operation soapAction="SetStilllegungAbgelehnt"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAntragAufFristverlaengerung">
+      <soap12:operation soapAction="SetAntragAufFristverlaengerung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RuecknahmeFristverlaengerung">
+      <soap12:operation soapAction="RuecknahmeFristverlaengerung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKlaerungErforderlich">
+      <soap12:operation soapAction="SetKlaerungErforderlich"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitWind">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitWind"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitAnlagenbetreiber">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitAnlagenbetreiber"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitSolar">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitSolar"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitBiomasse">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitBiomasse"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitWasser">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitWasser"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitVerbrennung">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitVerbrennung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGasSpeicher">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitGasSpeicher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitStromVerbraucher">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitStromVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGasErzeuger">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitGasErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitGasVerbraucher">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitGasVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetKorrekturVorschlagEinheitStromSpeicher">
+      <soap12:operation soapAction="SetKorrekturVorschlagEinheitStromSpeicher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitWind">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitWind"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="GetKorrekturVorschlagEinheitAnlagenbetreiber">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitAnlagenbetreiber"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitSolar">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitSolar"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitBiomasse">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitBiomasse"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitWasser">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitWasser"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitVerbrennung">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitVerbrennung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitStromVerbraucher">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitStromVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGasErzeuger">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitGasErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGasVerbraucher">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitGasVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitStromSpeicher">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitStromSpeicher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKorrekturVorschlagEinheitGasSpeicher">
+      <soap12:operation soapAction="GetKorrekturVorschlagEinheitGasSpeicher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteKorrekturvorschlag">
+      <soap12:operation soapAction="DeleteKorrekturvorschlag"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Anlage" type="mastr:Anlage">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+	 <wsdl:operation name="GetListeLetzteAktualisierung">
+      <soap:operation soapAction="GetListeLetzteAktualisierung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeAlleEinheiten">
+      <soap:operation soapAction="GetListeAlleEinheiten"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeFreigegebeneEinheiten">
+      <soap:operation soapAction="GetListeFreigegebeneEinheiten"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="GetListeGeloeschteUndDeaktivierteEinheiten">
+      <soap:operation soapAction="GetListeGeloeschteUndDeaktivierteEinheiten"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitWind">
+      <soap:operation soapAction="GetEinheitWind"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitSolar">
+      <soap:operation soapAction="GetEinheitSolar"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitWasser">
+      <soap:operation soapAction="GetEinheitWasser"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <soap:operation soapAction="GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitVerbrennung">
+      <soap:operation soapAction="GetEinheitVerbrennung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitKernkraft">
+      <soap:operation soapAction="GetEinheitKernkraft"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitStromSpeicher">
+      <soap:operation soapAction="GetEinheitStromSpeicher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitStromVerbraucher">
+      <soap:operation soapAction="GetEinheitStromVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGasErzeuger">
+      <soap:operation soapAction="GetEinheitGasErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGasSpeicher">
+      <soap:operation soapAction="GetEinheitGasSpeicher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGasVerbraucher">
+      <soap:operation soapAction="GetEinheitGasVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGenehmigung">
+      <soap:operation soapAction="GetEinheitGenehmigung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeStromErzeuger">
+      <soap:operation soapAction="GetGefilterteListeStromErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeStromVerbraucher">
+      <soap:operation soapAction="GetGefilterteListeStromVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeGasErzeuger">
+      <soap:operation soapAction="GetGefilterteListeGasErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeGasVerbraucher">
+      <soap:operation soapAction="GetGefilterteListeGasVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenStromErzeuger">
+      <soap:operation soapAction="GetGefilterteListeLokationenStromErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenStromVerbraucher">
+      <soap:operation soapAction="GetGefilterteListeLokationenStromVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenGasErzeuger">
+      <soap:operation soapAction="GetGefilterteListeLokationenGasErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenGasVerbraucher">
+      <soap:operation soapAction="GetGefilterteListeLokationenGasVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitBiomasse">
+      <soap:operation soapAction="GetEinheitBiomasse"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStromSpeicher">
+      <soap:operation soapAction="GetStromSpeicher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGasSpeicher">
+      <soap:operation soapAction="GetGasSpeicher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegWind">
+      <soap:operation soapAction="GetAnlageEegWind"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegSolar">
+      <soap:operation soapAction="GetAnlageEegSolar"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegBiomasse">
+      <soap:operation soapAction="GetAnlageEegBiomasse"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegWasser">
+      <soap:operation soapAction="GetAnlageEegWasser"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegSpeicher">
+      <soap:operation soapAction="GetAnlageEegSpeicher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <soap:operation soapAction="GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannung"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageKwk">
+      <soap:operation soapAction="GetAnlageKwk"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeAlleLokationen">
+      <soap:operation soapAction="GetListeAlleLokationen"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeFreigegebeneLokationen">
+      <soap:operation soapAction="GetListeFreigegebeneLokationen"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationStromErzeuger">
+      <soap:operation soapAction="GetLokationStromErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationStromVerbraucher">
+      <soap:operation soapAction="GetLokationStromVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationGasErzeuger">
+      <soap:operation soapAction="GetLokationGasErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationGasVerbraucher">
+      <soap:operation soapAction="GetLokationGasVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Anlage12" type="mastr:Anlage">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+	<wsdl:operation name="GetListeLetzteAktualisierung">
+      <soap12:operation soapAction="GetListeLetzteAktualisierung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeAlleEinheiten">
+      <soap12:operation soapAction="GetListeAlleEinheiten"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeFreigegebeneEinheiten">
+      <soap12:operation soapAction="GetListeFreigegebeneEinheiten"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="GetListeGeloeschteUndDeaktivierteEinheiten">
+      <soap12:operation soapAction="GetListeGeloeschteUndDeaktivierteEinheiten"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitWind">
+      <soap12:operation soapAction="GetEinheitWind"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitSolar">
+      <soap12:operation soapAction="GetEinheitSolar"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitWasser">
+      <soap12:operation soapAction="GetEinheitWasser"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <soap12:operation soapAction="GetEinheitGeoSolarthermieGrubenKlaerschlammDruckentspannung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitVerbrennung">
+      <soap12:operation soapAction="GetEinheitVerbrennung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitKernkraft">
+      <soap12:operation soapAction="GetEinheitKernkraft"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitStromSpeicher">
+      <soap12:operation soapAction="GetEinheitStromSpeicher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitStromVerbraucher">
+      <soap12:operation soapAction="GetEinheitStromVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGasErzeuger">
+      <soap12:operation soapAction="GetEinheitGasErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGasSpeicher">
+      <soap12:operation soapAction="GetEinheitGasSpeicher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGasVerbraucher">
+      <soap12:operation soapAction="GetEinheitGasVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitGenehmigung">
+      <soap12:operation soapAction="GetEinheitGenehmigung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeStromErzeuger">
+      <soap12:operation soapAction="GetGefilterteListeStromErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeStromVerbraucher">
+      <soap12:operation soapAction="GetGefilterteListeStromVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeGasErzeuger">
+      <soap12:operation soapAction="GetGefilterteListeGasErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeGasVerbraucher">
+      <soap12:operation soapAction="GetGefilterteListeGasVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenStromErzeuger">
+      <soap12:operation soapAction="GetGefilterteListeLokationenStromErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenStromVerbraucher">
+      <soap12:operation soapAction="GetGefilterteListeLokationenStromVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenGasErzeuger">
+      <soap12:operation soapAction="GetGefilterteListeLokationenGasErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGefilterteListeLokationenGasVerbraucher">
+      <soap12:operation soapAction="GetGefilterteListeLokationenGasVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEinheitBiomasse">
+      <soap12:operation soapAction="GetEinheitBiomasse"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStromSpeicher">
+      <soap12:operation soapAction="GetStromSpeicher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGasSpeicher">
+      <soap12:operation soapAction="GetGasSpeicher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegWind">
+      <soap12:operation soapAction="GetAnlageEegWind"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegSolar">
+      <soap12:operation soapAction="GetAnlageEegSolar"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegBiomasse">
+      <soap12:operation soapAction="GetAnlageEegBiomasse"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegWasser">
+      <soap12:operation soapAction="GetAnlageEegWasser"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegSpeicher">
+      <soap12:operation soapAction="GetAnlageEegSpeicher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannung">
+      <soap12:operation soapAction="GetAnlageEegGeoSolarthermieGrubenKlaerschlammDruckentspannung"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnlageKwk">
+      <soap12:operation soapAction="GetAnlageKwk"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeAlleLokationen">
+      <soap12:operation soapAction="GetListeAlleLokationen"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListeFreigegebeneLokationen">
+      <soap12:operation soapAction="GetListeFreigegebeneLokationen"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationStromErzeuger">
+      <soap12:operation soapAction="GetLokationStromErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationStromVerbraucher">
+      <soap12:operation soapAction="GetLokationStromVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationGasErzeuger">
+      <soap12:operation soapAction="GetLokationGasErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLokationGasVerbraucher">
+      <soap12:operation soapAction="GetLokationGasVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Netzanschlusspunkt" type="mastr:Netzanschlusspunkt">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SetNetzanschlusspunktStromErzeuger">
+      <soap:operation soapAction="SetNetzanschlusspunktStromErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzanschlusspunktStromVerbraucher">
+      <soap:operation soapAction="SetNetzanschlusspunktStromVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzanschlusspunktGasErzeuger">
+      <soap:operation soapAction="SetNetzanschlusspunktGasErzeuger"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzanschlusspunktGasVerbraucher">
+      <soap:operation soapAction="SetNetzanschlusspunktGasVerbraucher"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNetzanschlusspunkt">
+      <soap:operation soapAction="DeleteNetzanschlusspunkt"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="GetListeMeineNetzanschlusspunkte">
+      <soap:operation soapAction="GetListeMeineNetzanschlusspunkte"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="GetListeAlleNetzanschlusspunkte">
+      <soap:operation soapAction="GetListeAlleNetzanschlusspunkte"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Netzanschlusspunkt12" type="mastr:Netzanschlusspunkt">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="SetNetzanschlusspunktStromErzeuger">
+      <soap12:operation soapAction="SetNetzanschlusspunktStromErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzanschlusspunktStromVerbraucher">
+      <soap12:operation soapAction="SetNetzanschlusspunktStromVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzanschlusspunktGasErzeuger">
+      <soap12:operation soapAction="SetNetzanschlusspunktGasErzeuger"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNetzanschlusspunktGasVerbraucher">
+      <soap12:operation soapAction="SetNetzanschlusspunktGasVerbraucher"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNetzanschlusspunkt">
+      <soap12:operation soapAction="DeleteNetzanschlusspunkt"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="GetListeMeineNetzanschlusspunkte">
+      <soap12:operation soapAction="GetListeMeineNetzanschlusspunkte"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+	<wsdl:operation name="GetListeAlleNetzanschlusspunkte">
+      <soap12:operation soapAction="GetListeAlleNetzanschlusspunkte"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Marktstammdatenregister">
+    <wsdl:documentation>Die Marktstammdaten-Webdienst-Webdienste sind
+      eine Sammlung von HTTP-Schnittstellen zum programmtechnischen
+      Datenaustausch zwischen dem Marktstammdatenregister und Klienten.
+      Je nach Benutzergruppe kann der Zugriff eingeschränkt oder
+      vollständig sein. Neben dem Datenabruf ermöglichen die Webdienste
+      eine Unterstützung verschiedener Prozesse des
+      Marktstammdatenregisters.
+    </wsdl:documentation>
+    <wsdl:port binding="mastr:Allgemein" name="Allgemein">
+      <soap:address location="https://www.marktstammdatenregister.de/MaStRApi/Api.svc/Soap11/Common"/>
+    </wsdl:port>
+    <wsdl:port binding="mastr:Allgemein12" name="Allgemein12">
+      <soap12:address location="https://www.marktstammdatenregister.de/MaStRApi/Api.svc/Soap12/Common"/>
+    </wsdl:port>
+    <wsdl:port binding="mastr:Akteur" name="Akteur">
+      <soap:address location="https://www.marktstammdatenregister.de/MaStRApi/Api.svc/Soap11/Akteur"/>
+    </wsdl:port>
+    <wsdl:port binding="mastr:Akteur12" name="Akteur12">
+      <soap12:address location="https://www.marktstammdatenregister.de/MaStRApi/Api.svc/Soap12/Akteur"/>
+    </wsdl:port>
+    <wsdl:port binding="mastr:Netzbetreiberpruefung" name="Netzbetreiberpruefung">
+      <soap:address location="https://www.marktstammdatenregister.de/MaStRApi/Api.svc/Soap11/Netzbetreiber"/>
+    </wsdl:port>
+    <wsdl:port binding="mastr:Netzbetreiberpruefung12" name="Netzbetreiberpruefung12">
+      <soap12:address location="https://www.marktstammdatenregister.de/MaStRApi/Api.svc/Soap12/Netzbetreiber"/>
+    </wsdl:port>
+    <wsdl:port binding="mastr:Anlage" name="Anlage">
+      <soap:address location="https://www.marktstammdatenregister.de/MaStRApi/Api.svc/Soap11/Anlage"/>
+    </wsdl:port>
+    <wsdl:port binding="mastr:Anlage12" name="Anlage12">
+      <soap12:address location="https://www.marktstammdatenregister.de/MaStRApi/Api.svc/Soap12/Anlage"/>
+    </wsdl:port>
+    <wsdl:port binding="mastr:Netzanschlusspunkt" name="Netzanschlusspunkt">
+      <soap:address location="https://www.marktstammdatenregister.de/MaStRApi/Api.svc/Soap11/Netzanschlusspunkt"/>
+    </wsdl:port>
+    <wsdl:port binding="mastr:Netzanschlusspunkt12" name="Netzanschlusspunkt12">
+      <soap12:address location="https://www.marktstammdatenregister.de/MaStRApi/Api.svc/Soap12/Netzanschlusspunkt"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

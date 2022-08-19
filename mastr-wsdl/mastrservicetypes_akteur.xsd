@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Akteur" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:mastr="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle">
+  <import schemaLocation="mastrbasetypes.xsd" namespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle"/>
+  <!-- 6.5 Marktakteur-Funktionen -->
+  <element name="GetListeAlleMarktakteureRequest" type="mastr:GetListeAlleMarktakteureParameter"/>
+  <element name="GetListeAlleMarktakteureResponse" type="mastr:GetListeAlleMarktakteureAntwort"/>
+  <element name="GetListeFreigegebeneMarktakteureRequest" type="mastr:GetListeFreigegebeneMarktakteureParameter"/>
+  <element name="GetListeFreigegebeneMarktakteureResponse" type="mastr:GetListeFreigegebeneMarktakteureAntwort"/>
+  <element name="GetMarktakteurRequest" type="mastr:GetMarktakteurParameter"/>
+  <element name="GetMarktakteurResponse" type="mastr:GetMarktakteurAntwort"/>
+  <!-- 6.10 Erweiterte -->
+  <element name="GetGefilterteListeMarktakteureRequest" type="mastr:GetGefilterteListeMarktakteureParameter"/>
+  <element name="GetGefilterteListeMarktakteureResponse" type="mastr:GetGefilterteListeMarktakteureAntwort"/>
+  <element name="GetMeineMarktakteureRequest" type="mastr:GetMeineMarktakteureParameter"/>
+  <element name="GetMeineMarktakteureResponse" type="mastr:GetMeineMarktakteureAntwort"/>
+</schema>

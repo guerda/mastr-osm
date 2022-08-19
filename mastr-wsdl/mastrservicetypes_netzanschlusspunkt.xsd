@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle/Netzanschlusspunkt" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:mastr="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle">
+  <import schemaLocation="mastrbasetypes.xsd" namespace="https://www.marktstammdatenregister.de/Services/Public/1_2/Modelle"/>
+  <element name="SetNetzanschlusspunktStromErzeugerRequest" type="mastr:SetNetzanschlusspunktStromErzeugerParameter"/>
+  <element name="SetNetzanschlusspunktStromErzeugerResponse" type="mastr:SetNetzanschlusspunktStromErzeugerAntwort"/>
+  <element name="SetNetzanschlusspunktStromVerbraucherRequest" type="mastr:SetNetzanschlusspunktStromVerbraucherParameter"/>
+  <element name="SetNetzanschlusspunktStromVerbraucherResponse" type="mastr:SetNetzanschlusspunktStromVerbraucherAntwort"/>
+  <element name="SetNetzanschlusspunktGasErzeugerRequest" type="mastr:SetNetzanschlusspunktGasErzeugerParameter"/>
+  <element name="SetNetzanschlusspunktGasErzeugerResponse" type="mastr:SetNetzanschlusspunktGasErzeugerAntwort"/>
+  <element name="SetNetzanschlusspunktGasVerbraucherRequest" type="mastr:SetNetzanschlusspunktGasVerbraucherParameter"/>
+  <element name="SetNetzanschlusspunktGasVerbraucherResponse" type="mastr:SetNetzanschlusspunktGasVerbraucherAntwort"/>
+  <element name="DeleteNetzanschlusspunktRequest" type="mastr:DeleteNetzanschlusspunktParameter"/>
+  <element name="DeleteNetzanschlusspunktResponse" type="mastr:DeleteNetzanschlusspunktAntwort"/>
+  <element name="GetListeMeineNetzanschlusspunkteRequest" type="mastr:GetListeMeineNetzanschlusspunkteParameter"/>
+  <element name="GetListeMeineNetzanschlusspunkteResponse" type="mastr:GetListeMeineNetzanschlusspunkteAntwort"/>
+  <element name="GetListeAlleNetzanschlusspunkteRequest" type="mastr:GetListeAlleNetzanschlusspunkteParameter"/>
+  <element name="GetListeAlleNetzanschlusspunkteResponse" type="mastr:GetListeAlleNetzanschlusspunkteAntwort"/>
+</schema>
