@@ -6,92 +6,120 @@ import zeepdatefix
 from decimal import Decimal
 from rich.logging import RichHandler
 from zeep import Client
+from generator import SolarGenerator
 
 
-def get_solar_generators(post_code):
-    result = service.GetGefilterteListeStromErzeuger(
-        apiKey=api_key,
-        postleitzahl=post_code,
-        marktakteurMastrNummer=mastr_nr,
-        limit=ITEM_CALL_LIMIT,
-    )
-    log.info("Return code: %s" % result["Ergebniscode"])
-    log.info("Got %d generators on this call" % len(result["Einheiten"]))
-    solar_generators = []
-    for anlage in result["Einheiten"]:
-        if "Solareinheit" == anlage["Einheittyp"]:
-            solar_generators.append(anlage)
-    return solar_generators
+class PowerGenerator:
+    def __init__(self):
+
+        pass
 
 
-# Prepare logging
-ITEM_CALL_LIMIT = 100000
-FORMAT = "%(message)s"
-logging.basicConfig(
-    level="INFO", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
-)
-
-log = logging.getLogger("mastrclient")
-
-# Check if MaStR API key and MaStR number are provided
-api_key = os.getenv("API_KEY")
-if not api_key:
-    log.error("Missing API key, please provide via environment " "variable API_KEY.")
-    sys.exit(1)
-mastr_nr = os.getenv("MASTR_NR")
-if not api_key:
-    log.error(
-        "Missing Marktstammdaten Nummer, please provide via"
-        "environment variable MASTR_NR."
-    )
-    sys.exit(1)
-log.info("Beginning of API Key: " + api_key[:50])
-log.info("MaStR nummer: " + mastr_nr)
-
-# Create MaStR API client
-log.info("Create and test MaStR API client...")
-zeepdatefix.inject_date_fix()
-client = Client(
-    "https://www.marktstammdatenregister.de/MaStRAPI/wsdl/mastr.wsdl",
-)
-# Select Anlage12 as port
-service = client.bind(
-    service_name="Marktstammdatenregister",
-    port_name="Anlage12",
-)
-
-# Test API connection with time function
-log.info("Test API connection")
-with client.settings(strict=False):
-    response = client.service.GetLokaleUhrzeitMitAuthentifizierung(
-        apiKey=api_key,
-    )
-    if response["Ergebniscode"] != "OK":
-        raise ValueError(
-            "Could not query local time with authentication",
-            response,
+class MastrClient:
+    def __init__(self, api_key, mastr_nr):
+        self.log = logging.getLogger(self.__class__.__name__)
+        self.log.info("Create and test MaStR API client...")
+        zeepdatefix.inject_date_fix()
+        self.ITEM_CALL_LIMIT = 100000
+        self.api_key = api_key
+        self.mastr_nr = mastr_nr
+        self.client = Client(
+            "https://www.marktstammdatenregister.de/MaStRAPI/wsdl/mastr.wsdl",
         )
+        # Select Anlage12 as port
+        self.service = self.client.bind(
+            service_name="Marktstammdatenregister",
+            port_name="Anlage12",
+        )
+        self.zip_code_city_pattern = re.compile("^\d{5} [-\w]{2,}")
 
-    post_code = 40667
-    #Köttingen 50374
+    def get_solar_generators(self, zip_code):
+        with self.client.settings(strict=False):
+            result = self.service.GetGefilterteListeStromErzeuger(
+                apiKey=self.api_key,
+                postleitzahl=zip_code,
+                marktakteurMastrNummer=self.mastr_nr,
+                limit=self.ITEM_CALL_LIMIT,
+            )
+            self.log.info("Return code: %s" % result["Ergebniscode"])
+            self.log.info("Got %d generators on this call" % len(result["Einheiten"]))
+            solar_generators = []
+            for generator in result["Einheiten"]:
+                if "Solareinheit" == generator["Einheittyp"]:
+                    capacity = generator["Bruttoleistung"]
+                    is_commercial = not self.zip_code_city_pattern.match(
+                        generator["Standort"]
+                    )
+                    sg = SolarGenerator(capacity=capacity, is_commercial=is_commercial)
+                    solar_generators.append(sg)
+            return solar_generators
 
-    log.info("Retrieve generators filtered by postcode %s" % post_code)
-    solar_generators = get_solar_generators(post_code=post_code)
+    def test_api_connection(self):
+        with self.client.settings(strict=False):
+            response = self.client.service.GetLokaleUhrzeitMitAuthentifizierung(
+                apiKey=self.api_key,
+            )
+            if response["Ergebniscode"] != "OK":
+                raise ValueError(
+                    "Could not query local time with authentication",
+                    response,
+                )
+
+
+if __name__ == "__main__":
+    # Prepare logging
+    FORMAT = "%(message)s"
+    logging.basicConfig(
+        level="INFO", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
+    )
+
+    log = logging.getLogger("mastrclient")
+
+    # Check if MaStR API key and MaStR number are provided
+    api_key = os.getenv("MASTR_API_KEY")
+    if not api_key:
+        log.error(
+            "Missing MaStR API key, please provide via environment "
+            "variable MASTR_API_KEY."
+        )
+        sys.exit(1)
+    mastr_nr = os.getenv("MASTR_NR")
+    if not api_key:
+        log.error(
+            "Missing Marktstammdaten Nummer, please provide via"
+            "environment variable MASTR_NR."
+        )
+        sys.exit(1)
+    log.info("Beginning of API Key: " + api_key[:50])
+    log.info("MaStR nummer: " + mastr_nr)
+
+    mc = MastrClient(api_key=api_key, mastr_nr=mastr_nr)
+
+    # Create MaStR API client
+
+    # Test API connection with time function
+    log.info("Test API connection")
+    mc.test_api_connection()
+
+    zip_code = 40667
+
+    log.info("Retrieve generators filtered by postcode %s" % zip_code)
+    solar_generators = mc.get_solar_generators(zip_code=zip_code)
 
     generator_count = len(solar_generators)
-    log.info("%d solar generators in %d " % (generator_count, post_code))
+    log.info("%d solar generators in %d " % (generator_count, zip_code))
+    # TODO extract function to sum up capacities
     capacity_sum = Decimal()
-    postcode_city = re.compile("^\d{5} [-\w]{2,}")
     commercial_generator_count = 0
     commercial_capacity = 0
     for generator in solar_generators:
-        capacity_sum += generator["Bruttoleistung"]
-        if not postcode_city.match(generator["Standort"]):
+        capacity_sum += generator.capacity
+        if generator.is_commercial:
             commercial_generator_count += 1
-            commercial_capacity += generator["Bruttoleistung"]
+            commercial_capacity += generator.capacity
     log.info("Brutto capacity: %.2f kW" % capacity_sum)
     percentage_commercial = commercial_generator_count / generator_count
     log.info("%.2f %% commercial generators" % percentage_commercial)
-    percentage_commercial_capacity = commercial_capacity / capacity_sum
-    log.info("%.2f %% commercial capacity" % percentage_commercial_capacity)
+    percentage_commercial_cpcity = commercial_capacity / capacity_sum
+    log.info("%.2f %% commercial capacity" % percentage_commercial_cpcity)
     # TODO further pages

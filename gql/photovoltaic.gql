@@ -1,5 +1,6 @@
-rel[postal_code="{{plz}}"];
+[out:json][timeout:25];
+rel[zip_code=40667];
 map_to_area;
-node["power"="generator"]["generator:method"="photovoltaic"](area);
-way["power"="generator"]["generator:method"="photovoltaic"](area);
-relation["power"="generator"]["generator:method"="photovoltaic"](area);
+nw["power"="generator"]["generator:method"="photovoltaic"](area);
+(._;>;);
+out body;

@@ -10,7 +10,7 @@ beautifulsoup4 = "*"
 tqdm = "*"
 zeep = "*"
 rich = "*"
-overpy = "*"
+overpass = {editable = true, ref = "dc966113579d4e6d0e179af3fddc3b9221d6adaa", git = "https://github.com/mvexel/overpass-api-python-wrapper"}
 
 [dev-packages]
 black = "*"
