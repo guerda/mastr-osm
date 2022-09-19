@@ -1,7 +1,6 @@
-from utils import WattFormatter
+from utils import WattFormatter, PowerParser
 import overpass
 import logging
-import re
 
 
 class OsmDownloader:
@@ -9,10 +8,10 @@ class OsmDownloader:
         self.api = overpass.API()
         self.log = logging.getLogger("osmdownloader")
 
-    def get_solar_generators(self, zip_code):
+    def get_solar_generators(self, zip_code: str):
         r = self.api.get(
             """
-            rel[postal_code=%d];
+            rel[postal_code=%s];
             map_to_area;
             nw["power"="generator"]["generator:method"="photovoltaic"](area);
             """
@@ -22,40 +21,7 @@ class OsmDownloader:
         return r
 
     def parse_power(power_text):
-        """
-        Accepts a text of the tag `generator:output:electricity` and tries
-        to parses it into watts.
-        """
-        if "yes" == power_text:
-            return 0
-
-        # GW
-        # MW
-        # kW
-        # only number
-
-        g_match = re.search("((\d*(.)?)\d+) GW(p)?", power_text)
-        m_match = re.search("((\d*(.)?)\d+) MW(p)?", power_text)
-        k_match = re.search("((\d*(.)?)\d+) kW(p)?", power_text)
-        w_match = re.search("((\d*(.)?)\d+) W(p)?", power_text)
-
-        logging.info(power_text)
-
-        value = 0
-        if w_match:
-            value = float(w_match.group(1))
-            power = 1
-        elif k_match:
-            value = float(k_match.group(1))
-            power = 1000
-        elif m_match:
-            value = float(m_match.group(1))
-            power = 1000000
-        elif g_match:
-            value = float(g_match.group(1))
-            power = 1000000000
-
-        return power * value
+        return PowerParser.parse(power_text)
 
 
 if __name__ == "__main__":
