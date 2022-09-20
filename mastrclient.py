@@ -20,7 +20,7 @@ class MastrClient:
         self.log = logging.getLogger(self.__class__.__name__)
         self.log.info("Create and test MaStR API client...")
         zeepdatefix.inject_date_fix()
-        self.ITEM_CALL_LIMIT = 100000
+        self.ITEM_CALL_LIMIT = None  # 10000000
         self.api_key = api_key
         self.mastr_nr = mastr_nr
         self.client = Client(
@@ -42,7 +42,8 @@ class MastrClient:
                 limit=self.ITEM_CALL_LIMIT,
             )
             self.log.info("Return code: %s" % result["Ergebniscode"])
-            self.log.info("Got %d generators on this call" % len(result["Einheiten"]))
+            #
+            self.log.info("Got %d generators from MaStR" % len(result["Einheiten"]))
             solar_generators = []
             for generator in result["Einheiten"]:
                 if "Solareinheit" == generator["Einheittyp"]:
@@ -50,7 +51,12 @@ class MastrClient:
                     is_commercial = not self.zip_code_city_pattern.match(
                         generator["Standort"]
                     )
-                    sg = SolarGenerator(capacity=capacity, is_commercial=is_commercial)
+                    mastr_reference = generator["EinheitMastrNummer"]
+                    sg = SolarGenerator(
+                        capacity=capacity,
+                        is_commercial=is_commercial,
+                        mastr_reference=mastr_reference,
+                    )
                     solar_generators.append(sg)
             return solar_generators
 
