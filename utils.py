@@ -33,10 +33,10 @@ class PowerParser:
         # kW
         # only number
 
-        g_match = re.search("((\d*(.)?)\d+) GW(p)?", power_text)
-        m_match = re.search("((\d*(.)?)\d+) MW(p)?", power_text)
-        k_match = re.search("((\d*(.)?)\d+) kW(p)?", power_text)
-        w_match = re.search("((\d*(.)?)\d+) W(p)?", power_text)
+        g_match = re.search("((\\d*(.)?)\\d+) GW(p)?", power_text)
+        m_match = re.search("((\\d*(.)?)\\d+) MW(p)?", power_text)
+        k_match = re.search("((\\d*(.)?)\\d+) kW(p)?", power_text)
+        w_match = re.search("((\\d*(.)?)\\d+) W(p)?", power_text)
 
         value = 0
         if w_match:

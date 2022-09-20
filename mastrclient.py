@@ -31,7 +31,7 @@ class MastrClient:
             service_name="Marktstammdatenregister",
             port_name="Anlage12",
         )
-        self.zip_code_city_pattern = re.compile("^\d{5} [-\w]{2,}")
+        self.zip_code_city_pattern = re.compile("^\\d{5} [-\\w]{2,}")
 
     def get_solar_generators(self, zip_code):
         with self.client.settings(strict=False):

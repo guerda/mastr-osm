@@ -43,11 +43,14 @@ def test_parse_power_peak():
 def test_format_watt_w():
     assert WattFormatter.format(3) == "3.00 W"
 
+
 def test_format_watt_kw():
     assert WattFormatter.format(3000) == "3.00 kW"
 
+
 def test_format_watt_mw():
     assert WattFormatter.format(3000000) == "3.00 MW"
+
 
 def test_format_watt_gw():
     assert WattFormatter.format(3000000000) == "3.00 GW"
