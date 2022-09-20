@@ -14,7 +14,7 @@ class WattFormatter:
             suffix = "kW"
         else:
             factor = 1
-            suffix = ""
+            suffix = "W"
 
         return ("%.2f %s" % (watt / factor, suffix)).strip()
 
@@ -25,7 +25,7 @@ class PowerParser:
         Accepts a text of the tag `generator:output:electricity` and tries
         to parses it into watts.
         """
-        if "yes" == power_text:
+        if "yes" == power_text or "" == power_text:
             return 0
 
         # GW
@@ -51,6 +51,12 @@ class PowerParser:
         elif g_match:
             value = float(g_match.group(1))
             power = 1000000000
+        else:
+            try:
+                value = float(power_text)
+            except ValueError:
+                value = 0
+            power = 1
 
         return power * value
 
