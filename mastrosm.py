@@ -55,4 +55,14 @@ if __name__ == "__main__":
     od = OsmDownloader()
 
     log.info("Start downloading data...")
-    process_zip_code(mc, od, 40667, log)
+    i = 0
+    with open("zip_codes.txt", "r") as f:
+        for line in f:
+            i += 1
+            if i == 1:
+                continue
+            city_arr = line.split(";")
+            city = city_arr[0]
+            zip_code = city_arr[2]
+            log.info("Downloading %s (%s)" % (city, zip_code))
+            process_zip_code(mc, od, zip_code, log)
