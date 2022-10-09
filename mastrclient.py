@@ -6,7 +6,10 @@ import zeepdatefix
 from decimal import Decimal
 from rich.logging import RichHandler
 from zeep import Client
+from zeep.cache import SqliteCache
+from zeep.transports import Transport
 from generator import SolarGenerator
+import tempfile
 
 
 class PowerGenerator:
@@ -23,8 +26,12 @@ class MastrClient:
         self.ITEM_CALL_LIMIT = None  # 10000000
         self.api_key = api_key
         self.mastr_nr = mastr_nr
+        cache_file = "%s/zeep-cache.db" % tempfile.gettempdir()
+        self.log.debug("Zeep cache file: %s" % cache_file)
+        cache = SqliteCache(path=cache_file, timeout=60*60*24*7)
+        transport = Transport(cache=cache)
         self.client = Client(
-            "https://www.marktstammdatenregister.de/MaStRAPI/wsdl/mastr.wsdl",
+            "https://www.marktstammdatenregister.de/MaStRAPI/wsdl/mastr.wsdl", transport=transport
         )
         # Select Anlage12 as port
         self.service = self.client.bind(

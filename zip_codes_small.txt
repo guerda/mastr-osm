@@ -1,0 +1,14 @@
+Ort;Zusatz;Plz;Vorwahl;Bundesland
+Leverkusen;;51371;0214;Nordrhein-Westfalen
+Leverkusen;;51373;0214;Nordrhein-Westfalen
+Leverkusen;;51375;0214;Nordrhein-Westfalen
+Leverkusen;;51377;0214;Nordrhein-Westfalen
+Leverkusen;;51379;0214;Nordrhein-Westfalen
+Leverkusen;;51381;0214;Nordrhein-Westfalen
+Meerbusch;;40667;02150;Nordrhein-Westfalen
+Meerbusch;;40668;02150;Nordrhein-Westfalen
+Meerbusch;;40670;02150;Nordrhein-Westfalen
+Viersen;;41747;02162;Nordrhein-Westfalen
+Viersen;;41748;02162;Nordrhein-Westfalen
+Viersen;;41749;02162;Nordrhein-Westfalen
+Viersen;;41751;02162;Nordrhein-Westfalen

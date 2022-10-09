@@ -33,6 +33,8 @@ MaStR documentation
 
 Report
 ------
+The current report including history is available at [https://guerda.github.io/mastr-osm/](https://guerda.github.io/mastr-osm/).
+
 * Count of OSM mapped solar generators
 * count of MaStR registered solars generators
 * missing commercial solar generators
