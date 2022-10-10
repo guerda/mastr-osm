@@ -2,6 +2,7 @@ from utils import WattFormatter, PowerParser
 import overpass
 import logging
 from generator import SolarGenerator
+import time
 
 
 class OsmDownloader:
@@ -10,6 +11,8 @@ class OsmDownloader:
         self.log = logging.getLogger("osmdownloader")
 
     def get_solar_generators(self, zip_code: str):
+        while self.api.slots_available == 0:
+            time.sleep(3)
         r = self.api.get(
             """
             rel[postal_code=%s];

@@ -5,9 +5,10 @@ from rich.logging import RichHandler
 import os
 import sys
 import multiprocessing as mp
+from functools import partial
 
 
-def process_zip_code(mastrclient, osmdownloader, zip_code, log):
+def process_zip_code(zip_code, mastrclient, osmdownloader, log):
     log.info("Downloading zip code %s" % zip_code)
     solar_generators = mastrclient.get_solar_generators(zip_code=zip_code)
     count_mastr = len(solar_generators)
@@ -16,11 +17,12 @@ def process_zip_code(mastrclient, osmdownloader, zip_code, log):
         zip_code=zip_code
     ).features
     count_osm = len(solar_generators_osm)
-    log.info("Got %d generators in OpenStreetMap" % count_osm)
+    log.debug("Got %d generators in OpenStreetMap" % count_osm)
     mapped_quota = count_osm / count_mastr
-    log.info(
+    log.debug(
         "%.2f %% solar generators captured in %s in OSM" % (mapped_quota, zip_code)
     )
+    return count_mastr, count_osm
 
 
 if __name__ == "__main__":
@@ -55,9 +57,6 @@ if __name__ == "__main__":
     log.info("Creating OpenStreetMap downloader...")
     od = OsmDownloader()
 
-    log.info("Prepare multiprocessing with %d cores..." % mp.cpu_count())
-    pool = mp.Pool(mp.cpu_count())
-
     log.info("Start downloading data...")
     i = 0
     zip_codes = []
@@ -70,5 +69,9 @@ if __name__ == "__main__":
             city = city_arr[0]
             zip_code = city_arr[2]
             zip_codes.append(zip_code)
-    pool.starmap_async(process_zip_code, [(mc, od, zip_code, log) for zip_code in zip_codes])
+    log.info("Processing %d zip codes..." % len(zip_codes))
 
+    log.info("Prepare multiprocessing with %d cores..." % mp.cpu_count())
+    partial_func = partial(process_zip_code, mastrclient=mc, osmdownloader=od, log=log)
+    for zip_code in zip_codes:
+        log.info("MaStR: %s, OSM: %s" % partial_func(zip_code))
