@@ -1,20 +1,5 @@
 Ort;Zusatz;Plz;Vorwahl;Bundesland
-Augsburg;, Bay;86150;0821;Bayern
-Augsburg;, Bay;86152;0821;Bayern
-Augsburg;, Bay;86153;0821;Bayern
-Augsburg;, Bay;86154;0821;Bayern
-Augsburg;, Bay;86156;0821;Bayern
-Augsburg;, Bay;86157;0821;Bayern
-Augsburg;, Bay;86159;0821;Bayern
-Augsburg;, Bay;86161;0821;Bayern
-Augsburg;, Bay;86163;0821;Bayern
-Augsburg;, Bay;86165;0821;Bayern
-Augsburg;, Bay;86167;0821;Bayern
-Augsburg;, Bay;86169;0821;Bayern
-Augsburg;, Bay;86179;0821;Bayern
-Augsburg;, Bay;86199;0821;Bayern
-Euskirchen;;53879;02251;Nordrhein-Westfalen
-Euskirchen;;53881;02251;Nordrhein-Westfalen
+Erftstadt;;50374;02235;Nordrhein-Westfalen
 Leverkusen;;51371;0214;Nordrhein-Westfalen
 Leverkusen;;51373;0214;Nordrhein-Westfalen
 Leverkusen;;51375;0214;Nordrhein-Westfalen

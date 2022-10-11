@@ -1,11 +1,16 @@
-from osmdownloader import OsmDownloader
-from mastrclient import MastrClient
+import json
 import logging
-from rich.logging import RichHandler
-import os
-import sys
 import multiprocessing as mp
+import os
+import pydantic
+import sys
+from datetime import datetime
 from functools import partial
+from osmdownloader import OsmDownloader
+from pydantic.json import pydantic_encoder
+from mastrclient import MastrClient
+from municipality import MunicipalityHistory
+from rich.logging import RichHandler
 
 
 def process_zip_code(zip_code, mastrclient, osmdownloader, log):
@@ -74,4 +79,15 @@ if __name__ == "__main__":
     log.info("Prepare multiprocessing with %d cores..." % mp.cpu_count())
     partial_func = partial(process_zip_code, mastrclient=mc, osmdownloader=od, log=log)
     for zip_code in zip_codes:
-        log.info("MaStR: %s, OSM: %s" % partial_func(zip_code))
+        history_file = "docs/data/%s.json" % zip_code
+        m: MunicipalityHistory = MunicipalityHistory()
+        if os.path.isfile(history_file):
+            m = pydantic.parse_file_as(path=history_file, type_=MunicipalityHistory)
+        m.dates.append(datetime.now())
+        solar_generators, solar_generators_mapped = partial_func(zip_code)
+        m.solarGenerators.append(solar_generators)
+        m.solarGeneratorsMapped.append(solar_generators_mapped)
+        log.info("MaStR: %s, OSM: %s" % (solar_generators, solar_generators_mapped))
+
+        with open(history_file, "w") as f:
+            f.write(json.dumps(m, indent=4, default=pydantic_encoder))

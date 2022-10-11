@@ -7,12 +7,12 @@ import time
 
 class OsmDownloader:
     def __init__(self):
-        self.api = overpass.API()
+        self.api = overpass.API(timeout=40)
         self.log = logging.getLogger("osmdownloader")
 
     def get_solar_generators(self, zip_code: str):
         while self.api.slots_available == 0:
-            time.sleep(3)
+            time.sleep(5)
         r = self.api.get(
             """
             rel[postal_code=%s];
