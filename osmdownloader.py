@@ -24,16 +24,25 @@ class OsmDownloader:
         )
         return r
 
-    def create_generator(self, feature):
+    def create_generator(self, features):
         generator = SolarGenerator()
-        generator.is_commercial = "ref" in f.properties and "operator" in f.properties
+        # Is generator commercial?
+        generator.is_commercial = (
+            "ref" in features.properties and "operator" in features.properties
+        )
 
+        # OSM Node ID
+        # if "id" in features.properties:
+        #    generator.osm_id = features.properties["id"]
+
+        # Which capacity does the generator have?
         generator.capacity = 0
-        if "generator:output:electricity" in f.properties:
+        if "generator:output:electricity" in features.properties:
             generator.capacity = PowerParser.parse(
-                f.properties["generator:output:electricity"]
+                features.properties["generator:output:electricity"]
             )
-        self.log.debug(f.properties)
+        self.log.debug(features.properties)
+        return generator
 
 
 if __name__ == "__main__":
