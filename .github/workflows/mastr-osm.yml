@@ -12,9 +12,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      MASTR_API_KEY: ${{ MASTR_API_KEY }}
-      MASTR_NR: ${{ MASTR_NR }}
 
     steps:
     - uses: actions/checkout@v3
@@ -29,5 +26,8 @@ jobs:
         pip install pipenv
         pipenv install
     - name: Create report
+      env:
+        MASTR_API_KEY: ${{ MASTR_API_KEY }}
+        MASTR_NR: ${{ MASTR_NR }}
       run: |
         pipenv run python mastrosm.py
