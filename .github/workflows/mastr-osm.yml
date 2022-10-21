@@ -11,8 +11,10 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    env:
+      MASTR_API_KEY = ${{ MASTR_API_KEY }}
+      MASTR_NR = ${{ MASTR_NR }}
 
     steps:
     - uses: actions/checkout@v3
