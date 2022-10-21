@@ -16,6 +16,7 @@
         <div class="progress" id="progress-all">
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
         </div>
+        <span style="visibility: hidden;">
         Mapped commercial PV generators:
         <div class="progress" id="progress-commercial">
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
@@ -24,8 +25,11 @@
         <div class="progress" id="progress-private">
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
         </div>
+        </span>
+        
         <div id="progress-plot" style="width:800px;height:600px;"></div>
     </div>
+    
     <script src="plotly-2.14.0.min.js"></script>
     <script src="report.js"></script>
     <script src="bootstrap.bundle.min.js"></script>
