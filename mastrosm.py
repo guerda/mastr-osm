@@ -1,9 +1,9 @@
 import json
 import logging
-import multiprocessing as mp
 import os
 import pydantic
 import sys
+import time
 from datetime import datetime
 from functools import partial
 from osmdownloader import OsmDownloader
@@ -76,7 +76,6 @@ if __name__ == "__main__":
             zip_codes.append(zip_code)
     log.info("Processing %d zip codes..." % len(zip_codes))
 
-    log.info("Prepare multiprocessing with %d cores..." % mp.cpu_count())
     partial_func = partial(process_zip_code, mastrclient=mc, osmdownloader=od, log=log)
     for zip_code in zip_codes:
         history_file = "docs/data/%s.json" % zip_code
@@ -91,3 +90,5 @@ if __name__ == "__main__":
 
         with open(history_file, "w") as f:
             f.write(json.dumps(m, indent=4, default=pydantic_encoder))
+        log.info("Waiting in order to not overload the server.")
+        time.sleep(3)
