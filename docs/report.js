@@ -29,27 +29,29 @@ function load_zip_code_data(zip_code) {
     .then((progressData) => {
       // Overall progress plot
       var progressPlotElement = document.getElementById("progress-plot");
-      layout = {
+      var data = [
+        {
+          x: progressData["dates"],
+          y: progressData["solarGenerators"],
+          name: "Registered in MaStR",
+          fill: "tozeroy",
+        },
+        {
+          x: progressData["dates"],
+          y: progressData["solarGeneratorsMapped"],
+          name: "Mapped in OSM",
+          fill: "tozeroy",
+        },
+      ]
+      var config = { responsive: true }
+      var layout = {
         title: "Registered and mapped solar generators by time",
       };
       var plot = Plotly.newPlot(
         progressPlotElement,
-        [
-          {
-            x: progressData["dates"],
-            y: progressData["solarGenerators"],
-            name: "Registered in MaStR",
-            fill: "tozeroy",
-          },
-          {
-            x: progressData["dates"],
-            y: progressData["solarGeneratorsMapped"],
-            name: "Mapped in OSM",
-            fill: "tozeroy",
-          },
-        ],
-
-        layout
+        data,
+        layout,
+        config
       );
 
       // Progress bars
