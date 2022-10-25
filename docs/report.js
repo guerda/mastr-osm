@@ -1,13 +1,38 @@
+function zipCodeSelect(event) {
+  var zipCode = event.target.value;
+  var city = event.target.selectedOptions[0].innerHTML;
+
+  var headline = document.getElementById("cityHeadline");
+  headline.innerHTML = city;
+
+  load_zip_code_data(zipCode);
+}
+
+function load_available_zip_codes() {
+  fetch("data/available-zip-codes.json")
+    .then((response) => response.json())
+    .then((availableZipCodes) => {
+      var zipCodeSelector = document.getElementById("zipCodeSelector");
+      for (i in availableZipCodes) {
+        zipCode = availableZipCodes[i];
+        var zipOption = document.createElement("option");
+        zipOption.value = zipCode.zipCode;
+        zipOption.innerHTML = zipCode.city + " (" + zipCode.zipCode + ")";
+        zipCodeSelector.appendChild(zipOption);
+      }
+    });
+}
+
 function load_zip_code_data(zip_code) {
   fetch("data/" + zip_code + ".json")
     .then((response) => response.json())
     .then((progressData) => {
       // Overall progress plot
-      progressPlotElement = document.getElementById("progress-plot");
+      var progressPlotElement = document.getElementById("progress-plot");
       layout = {
         title: "Registered and mapped solar generators by time",
       };
-      plot = Plotly.newPlot(
+      var plot = Plotly.newPlot(
         progressPlotElement,
         [
           {
@@ -56,4 +81,12 @@ function load_zip_code_data(zip_code) {
       progressPrivate = document.getElementById("progress-private");
     });
 }
+
+load_available_zip_codes();
 load_zip_code_data(40667);
+
+document
+  .getElementById("zipCodeSelector")
+  .addEventListener("input", function (event) {
+    zipCodeSelect(event);
+  });
