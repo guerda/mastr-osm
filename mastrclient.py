@@ -27,10 +27,11 @@ class MastrClient:
         self.mastr_nr = mastr_nr
         cache_file = "%s/zeep-cache.db" % tempfile.gettempdir()
         self.log.info("Zeep cache file: %s" % cache_file)
-        cache = SqliteCache(path=cache_file, timeout=60*60*24*7)
+        cache = SqliteCache(path=cache_file, timeout=60 * 60 * 24 * 7)
         transport = Transport(cache=cache)
         self.client = Client(
-            "https://test.marktstammdatenregister.de/MaStRAPI/wsdl/mastr.wsdl", transport=transport
+            "https://test.marktstammdatenregister.de/MaStRAPI/wsdl/mastr.wsdl",
+            transport=transport,
         )
         # Select Anlage12 as port
         self.service = self.client.bind(
@@ -39,7 +40,18 @@ class MastrClient:
         )
         self.zip_code_city_pattern = re.compile("^\\d{5} [-\\w]{2,}")
 
-    def get_solar_generators(self, zip_code):
+    def create_generator(self, generator):
+        capacity = generator["Bruttoleistung"]
+        is_commercial = not self.zip_code_city_pattern.match(generator["Standort"])
+        mastr_reference = generator["EinheitMastrNummer"]
+        sg = SolarGenerator(
+            capacity=capacity,
+            is_commercial=is_commercial,
+            mastr_reference=mastr_reference,
+        )
+        return sg
+
+    def get_solar_generators(self, zip_code: str):
         with self.client.settings(strict=False):
             result = self.service.GetGefilterteListeStromErzeuger(
                 apiKey=self.api_key,
@@ -48,21 +60,11 @@ class MastrClient:
                 limit=self.ITEM_CALL_LIMIT,
             )
             self.log.debug("Return code: %s" % result["Ergebniscode"])
-            #
             self.log.debug("Got %d generators from MaStR" % len(result["Einheiten"]))
             solar_generators = []
             for generator in result["Einheiten"]:
                 if "Solareinheit" == generator["Einheittyp"]:
-                    capacity = generator["Bruttoleistung"]
-                    is_commercial = not self.zip_code_city_pattern.match(
-                        generator["Standort"]
-                    )
-                    mastr_reference = generator["EinheitMastrNummer"]
-                    sg = SolarGenerator(
-                        capacity=capacity,
-                        is_commercial=is_commercial,
-                        mastr_reference=mastr_reference,
-                    )
+                    sg = self.create_generator(generator)
                     solar_generators.append(sg)
             return solar_generators
 

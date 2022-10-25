@@ -46,6 +46,12 @@ function load_zip_code_data(zip_code) {
       var config = { responsive: true }
       var layout = {
         title: "Registered and mapped solar generators by time",
+        showlegend: true,
+        legend: {
+          x: 0.01,
+          y: 0.9
+      
+        }
       };
       var plot = Plotly.newPlot(
         progressPlotElement,

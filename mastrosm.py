@@ -13,7 +13,9 @@ from municipality import MunicipalityHistory
 from rich.logging import RichHandler
 
 
-def process_zip_code(zip_code, mastrclient, osmdownloader, log):
+def process_zip_code(
+    zip_code: str, mastrclient: MastrClient, osmdownloader: OsmDownloader, log
+):
     log.info("Downloading zip code %s" % zip_code)
     solar_generators = mastrclient.get_solar_generators(zip_code=zip_code)
     count_mastr = len(solar_generators)
