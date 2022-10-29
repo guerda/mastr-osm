@@ -75,11 +75,12 @@ if __name__ == "__main__":
             city_arr = line.split(";")
             city = city_arr[0]
             zip_code = city_arr[2]
-            zip_codes.append(zip_code)
+            zip_codes.append((zip_code, city))
     log.info("Processing %d zip codes..." % len(zip_codes))
 
+    available_zip_codes = []
     partial_func = partial(process_zip_code, mastrclient=mc, osmdownloader=od, log=log)
-    for zip_code in zip_codes:
+    for zip_code, city in zip_codes:
         history_file = "docs/data/%s.json" % zip_code
         m: MunicipalityHistory = MunicipalityHistory()
         if os.path.isfile(history_file):
@@ -94,3 +95,6 @@ if __name__ == "__main__":
             f.write(json.dumps(m, indent=4, default=pydantic_encoder))
         log.info("Waiting in order to not overload the server.")
         time.sleep(3)
+        available_zip_codes.append({"zipCode": zip_code, "city": city})
+    with open("docs/data/available-zip-codes.json", "w") as f:
+        f.write(json.dumps(available_zip_codes, indent=4, default=pydantic_encoder))

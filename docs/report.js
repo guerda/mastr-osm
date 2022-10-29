@@ -34,13 +34,19 @@ function load_zip_code_data(zip_code) {
           x: progressData["dates"],
           y: progressData["solarGenerators"],
           name: "Registered in MaStR",
-          fill: "tozeroy",
+          fill: "tonexty",
+          marker: { 
+            color: "#FFC20A"
+          }
         },
         {
           x: progressData["dates"],
           y: progressData["solarGeneratorsMapped"],
           name: "Mapped in OSM",
           fill: "tozeroy",
+          marker: { 
+            color: "#0C7BDC"
+          }
         },
       ]
       var config = { responsive: true }
@@ -50,7 +56,6 @@ function load_zip_code_data(zip_code) {
         legend: {
           x: 0.01,
           y: 0.9
-      
         }
       };
       var plot = Plotly.newPlot(
