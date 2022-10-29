@@ -1,0 +1,6 @@
+[out:json][timeout:200];
+{{geocodeArea:Germany}}->.searchArea;
+(
+  nw["power"="generator"](area.searchArea); 
+);
+out body;
