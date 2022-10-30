@@ -16,6 +16,18 @@ from rich.logging import RichHandler
 def process_zip_code(
     zip_code: str, mastrclient: MastrClient, osmdownloader: OsmDownloader, log
 ):
+    """Downloads data from OpenStreetMap and MaStR for one zip code.
+    Helper function for main loop.
+
+    Args:
+        zip_code (str): Zip code specifying the municipality for which the data should be downloaded.
+        mastrclient (MastrClient): The instance of MastrClient which has authentication set up to download data from MaStR
+        osmdownloader (OsmDownloader): The instance of OsmDownloader which has all setup to download data from OSM.
+        log (_type_): log object to log information about the process
+
+    Returns:
+        int, int: count of solar generators in MaStr, count of solar generators in OpenStreetMap
+    """
     log.info("Downloading zip code %s" % zip_code)
     solar_generators = mastrclient.get_solar_generators(zip_code=zip_code)
     count_mastr = len(solar_generators)
@@ -66,6 +78,7 @@ if __name__ == "__main__":
 
     log.info("Start downloading data...")
     i = 0
+    # Read out all zip codes from the source file
     zip_codes = []
     with open("zip_codes_small.txt", "r") as f:
         for line in f:
@@ -78,23 +91,29 @@ if __name__ == "__main__":
             zip_codes.append((zip_code, city))
     log.info("Processing %d zip codes..." % len(zip_codes))
 
+    # Download data for each zip code
     available_zip_codes = []
     partial_func = partial(process_zip_code, mastrclient=mc, osmdownloader=od, log=log)
     for zip_code, city in zip_codes:
+        # Load historic data for this municipality
         history_file = "docs/data/%s.json" % zip_code
         m: MunicipalityHistory = MunicipalityHistory()
         if os.path.isfile(history_file):
             m = pydantic.parse_file_as(path=history_file, type_=MunicipalityHistory)
         m.dates.append(datetime.now())
+        # Download data from OSM and MaStR
         solar_generators, solar_generators_mapped = partial_func(zip_code)
         m.solarGenerators.append(solar_generators)
         m.solarGeneratorsMapped.append(solar_generators_mapped)
         log.info("MaStR: %s, OSM: %s" % (solar_generators, solar_generators_mapped))
 
+        # Write data to data file
         with open(history_file, "w") as f:
             f.write(json.dumps(m, indent=4, default=pydantic_encoder))
         log.info("Waiting in order to not overload the server.")
         time.sleep(3)
         available_zip_codes.append({"zipCode": zip_code, "city": city})
+
+    # Write processed zip codes to file for selection in the UI
     with open("docs/data/available-zip-codes.json", "w") as f:
         f.write(json.dumps(available_zip_codes, indent=4, default=pydantic_encoder))
