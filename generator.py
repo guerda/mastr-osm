@@ -9,7 +9,7 @@ class SolarGenerator(BaseModel):
 
     def __repr__(self):
         return (
-            "%s - capacity: %d, is commercial: %s, MaStR reference: %s, OSM ID: %d"
+            "%s - capacity: %d, is commercial: %s, MaStR reference: %s, OSM ID: %s"
             % (
                 type(self).__name__,
                 self.capacity,

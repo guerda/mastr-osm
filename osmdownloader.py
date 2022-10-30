@@ -22,7 +22,13 @@ class OsmDownloader:
             % zip_code,
             verbosity="geom",
         )
-        return r
+        logging.debug(r)
+        generators = []
+        for f in r.features:
+            generator = self.create_generator(f)
+            generators.append(generator)
+            # sum_power += power
+        return generators
 
     def create_generator(self, features):
         generator = SolarGenerator()
@@ -53,16 +59,10 @@ if __name__ == "__main__":
         level="DEBUG", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
     )
     od = OsmDownloader()
-    r = od.get_solar_generators(40667)
-    logging.debug(r)
-    generators = []
-    for f in r.features:
-        generator = od.create_generator(f)
-        generators.append(generator)
-        # sum_power += power
-
+    generators = od.get_solar_generators(40667)
+    logging.info(generators)
     logging.info("%d PV generators" % len(generators))
-    sum_power = sum(g.capacity for g in generators)
-    count_commercials = len(g for g in generators if g.is_commercial)
-    logging.info("Total sum of at least %d watt peak" % WattFormatter.format(sum_power))
+    sum_power = sum([g.capacity for g in generators])
+    count_commercials = len([g for g in generators if g.is_commercial])
+    logging.info("Total sum of at least %s watt peak" % WattFormatter.format(sum_power))
     logging.info("%d commercial generators" % count_commercials)

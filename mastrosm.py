@@ -20,22 +20,29 @@ def process_zip_code(
     Helper function for main loop.
 
     Args:
-        zip_code (str): Zip code specifying the municipality for which the data should be downloaded.
-        mastrclient (MastrClient): The instance of MastrClient which has authentication set up to download data from MaStR
-        osmdownloader (OsmDownloader): The instance of OsmDownloader which has all setup to download data from OSM.
+        zip_code (str): Zip code specifying the municipality for which the data should
+        be downloaded.
+        mastrclient (MastrClient): The instance of MastrClient which has authentication
+        set up to download data from MaStR
+        osmdownloader (OsmDownloader): The instance of OsmDownloader which has all
+        setup to download data from OSM.
         log (_type_): log object to log information about the process
 
     Returns:
-        int, int: count of solar generators in MaStr, count of solar generators in OpenStreetMap
+        int, int: count of solar generators in MaStr, count of solar generators in
+         OpenStreetMap
     """
     log.info("Downloading zip code %s" % zip_code)
+    # MaStR
     solar_generators = mastrclient.get_solar_generators(zip_code=zip_code)
     count_mastr = len(solar_generators)
 
+    # OpenStreetMap
     solar_generators_osm = osmdownloader.get_solar_generators(
         zip_code=zip_code
-    ).features
+    )
     count_osm = len(solar_generators_osm)
+
     log.debug("Got %d generators in OpenStreetMap" % count_osm)
     mapped_quota = count_osm / count_mastr
     log.debug(
