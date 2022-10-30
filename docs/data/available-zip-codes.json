@@ -1,5 +1,9 @@
 [
     {
+        "zipCode": "40667",
+        "city": "Meerbusch"
+    },
+    {
         "zipCode": "40210",
         "city": "D\u00fcsseldorf"
     },
@@ -178,10 +182,6 @@
     {
         "zipCode": "51381",
         "city": "Leverkusen"
-    },
-    {
-        "zipCode": "40667",
-        "city": "Meerbusch"
     },
     {
         "zipCode": "40668",
