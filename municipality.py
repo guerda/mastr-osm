@@ -6,3 +6,4 @@ class MunicipalityHistory(BaseModel):
     dates: list[datetime] = []
     solarGenerators: list[int] = []
     solarGeneratorsMapped: list[int] = []
+    missingCommercialGenerators: list[str] = []

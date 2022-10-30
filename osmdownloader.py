@@ -47,6 +47,8 @@ class OsmDownloader:
             generator.capacity = PowerParser.parse(
                 features.properties["generator:output:electricity"]
             )
+        if "ref" in features.properties:
+            generator.mastr_reference = features.properties["ref"]
         self.log.debug(features.properties)
         return generator
 

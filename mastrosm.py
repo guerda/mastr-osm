@@ -38,17 +38,23 @@ def process_zip_code(
     count_mastr = len(solar_generators)
 
     # OpenStreetMap
-    solar_generators_osm = osmdownloader.get_solar_generators(
-        zip_code=zip_code
-    )
+    solar_generators_osm = osmdownloader.get_solar_generators(zip_code=zip_code)
     count_osm = len(solar_generators_osm)
+
+    # Missing commercial generators in OSM
+    mastr_refs = set(
+        [g.mastr_reference if g.is_commercial else None for g in solar_generators]
+    )
+    osm_refs = set([g.mastr_reference for g in solar_generators_osm])
+    missing_generators = mastr_refs - osm_refs
+    log.info(missing_generators)
 
     log.debug("Got %d generators in OpenStreetMap" % count_osm)
     mapped_quota = count_osm / count_mastr
     log.debug(
         "%.2f %% solar generators captured in %s in OSM" % (mapped_quota, zip_code)
     )
-    return count_mastr, count_osm
+    return count_mastr, count_osm, missing_generators
 
 
 if __name__ == "__main__":
@@ -109,9 +115,12 @@ if __name__ == "__main__":
             m = pydantic.parse_file_as(path=history_file, type_=MunicipalityHistory)
         m.dates.append(datetime.now())
         # Download data from OSM and MaStR
-        solar_generators, solar_generators_mapped = partial_func(zip_code)
+        solar_generators, solar_generators_mapped, missing_generators = partial_func(
+            zip_code
+        )
         m.solarGenerators.append(solar_generators)
         m.solarGeneratorsMapped.append(solar_generators_mapped)
+        m.missingCommercialGenerators = missing_generators
         log.info("MaStR: %s, OSM: %s" % (solar_generators, solar_generators_mapped))
 
         # Write data to data file
