@@ -21,7 +21,8 @@ def test_represent_as_json():
     m_json = m.json()
     assert (
         """{"dates": ["2022-01-31T14:01:03.000003"], "solarGenerators": [0, 1, 2],"""
-        """ "solarGeneratorsMapped": [0, 0, 1]}""" == m_json
+        """ "solarGeneratorsMapped": [0, 0, 1],"""
+        """ "missingCommercialGenerators": []}""" == m_json
     )
 
 
