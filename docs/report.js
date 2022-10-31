@@ -94,12 +94,17 @@ function load_zip_code_data(zip_code) {
       progressPrivate = document.getElementById("progress-private");
 
       // List missing commercial solar generators
+      // https://www.marktstammdatenregister.de/MaStR/Schnellsuche/Schnellsuche?praefix=SEE&mastrNummer=967874079474
       var missingGeneratorsElement = document.getElementById("missing-commercial-generators");
       console.log(progressData["missingCommercialGenerators"])
       var missingGenerators = progressData["missingCommercialGenerators"]
       for (i in missingGenerators) {
+        var mastrId = missingGenerators[i];
+        var mastrLink = document.createElement("a");
+        mastrLink.innerHTML = mastrId;
+        mastrLink.href = "https://www.marktstammdatenregister.de/MaStR/Schnellsuche/Schnellsuche?praefix=SEE&mastrNummer="+ mastrId.substr(3);
         var generatorListItem = document.createElement("li");
-        generatorListItem.innerHTML = missingGenerators[i];
+        generatorListItem.appendChild(mastrLink);
         missingGeneratorsElement.appendChild(generatorListItem);
       }
     });

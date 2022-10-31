@@ -6,6 +6,8 @@ class SolarGenerator(BaseModel):
     is_commercial: bool = False
     mastr_reference: str = None
     osm_id: int = None
+    lat: float = None
+    lon: float = None
 
     def __repr__(self):
         return (
