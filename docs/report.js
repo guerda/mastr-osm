@@ -93,10 +93,13 @@ function load_zip_code_data(zip_code) {
       progressCommercial = document.getElementById("progress-commercial");
       progressPrivate = document.getElementById("progress-private");
 
+      // List missing commercial solar generators
       var missingGeneratorsElement = document.getElementById("missing-commercial-generators");
-      for (missingGenerator in progressData["missingCommercialGenerators"]) {
+      console.log(progressData["missingCommercialGenerators"])
+      var missingGenerators = progressData["missingCommercialGenerators"]
+      for (i in missingGenerators) {
         var generatorListItem = document.createElement("li");
-        generatorListItem.innerHTML = missingGenerator;
+        generatorListItem.innerHTML = missingGenerators[i];
         missingGeneratorsElement.appendChild(generatorListItem);
       }
     });
