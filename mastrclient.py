@@ -106,7 +106,11 @@ class MastrClient:
                 einheitMastrNummer=mastr_nr,
                 marktakteurMastrNummer=self.mastr_nr,
             )
-            self.log.info(result)
+            self.log.debug(result)
+            lat = result["Breitengrad"]
+            lon = result["Laengengrad"]
+            self.log.info(lat)
+            self.log.info(lon)
             # Laengengrad
             # Breitengrad
         pass

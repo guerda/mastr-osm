@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 requests = "*"
-scrapy = "*"
 beautifulsoup4 = "*"
 tqdm = "*"
 zeep = "*"
