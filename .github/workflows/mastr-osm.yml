@@ -31,3 +31,12 @@ jobs:
         MASTR_NR: ${{ secrets.MASTR_NR }}
       run: |
         pipenv run python mastrosm.py
+    - name: Commit changes to repository
+      run: |
+        if ! git diff --quiet docs
+        then
+          git config --global user.name 'Philip Gillißen'
+          git config --global user.email 'guerda@freenet.de'
+          git commit -am "🤖 Update report data"
+          git push
+        fi
