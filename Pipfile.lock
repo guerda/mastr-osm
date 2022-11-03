@@ -535,14 +535,6 @@
             "index": "pypi",
             "version": "==12.6.0"
         },
-        "scrapy": {
-            "hashes": [
-                "sha256:4acbe0f1f5fb5ea91353512b8958ed304bc25f6dfbde2839a0d87a49435158b9",
-                "sha256:844647e5c29097cd0cfcb0efbc951bf967830d608cfb3613fe17ff9b137a97ae"
-            ],
-            "index": "pypi",
-            "version": "==2.7.0"
-        },
         "service-identity": {
             "hashes": [
                 "sha256:6e6c6086ca271dc11b033d17c3a8bea9f24ebff920c587da090afc9519419d34",
