@@ -8,6 +8,7 @@ class SolarGenerator(BaseModel):
     osm_id: int = None
     lat: float = None
     lon: float = None
+    mastr_detail_url: str = None
 
     def __repr__(self):
         return (

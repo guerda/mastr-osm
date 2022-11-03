@@ -1,6 +1,7 @@
 import logging
 import os
 import re
+import requests
 import sys
 import zeepdatefix
 from decimal import Decimal
@@ -38,7 +39,7 @@ class MastrClient:
         cache = SqliteCache(path=cache_file, timeout=60 * 60 * 24 * 7)
         transport = Transport(cache=cache)
         self.client = Client(
-            "https://test.marktstammdatenregister.de/MaStRAPI/wsdl/mastr.wsdl",
+            "https://www.marktstammdatenregister.de/MaStRAPI/wsdl/mastr.wsdl",
             transport=transport,
         )
         # Select Anlage12 as port
@@ -55,7 +56,8 @@ class MastrClient:
             generator (_type_): _description_
 
         Returns:
-            SolarGenerator: plain object containing information about commercial usage, MaStR number, and capacity
+            SolarGenerator: plain object containing information about commercial usage,
+              MaStR number, and capacity
         """
         # TODO add location as close as possible
         # TODO add page URL
@@ -67,13 +69,16 @@ class MastrClient:
             is_commercial=is_commercial,
             mastr_reference=mastr_reference,
         )
+        detail_url = self.get_mastr_detail_url(mastr_reference)
+        sg.mastr_detail_url = detail_url
         return sg
 
     def get_solar_generators(self, zip_code: str):
         """Download solar generators for one zip codes
 
         Args:
-            zip_code (str): Zip code describing the municipality where to download solar generators for.
+            zip_code (str): Zip code describing the municipality where to download
+              solar generators for.
 
         Returns:
             list[SolarGenerator]: List of SolarGenerator for easy analysis
@@ -94,20 +99,35 @@ class MastrClient:
                     solar_generators.append(sg)
             return solar_generators
 
-    def get_generator_details(self, mastr_nr: str, market_actor: str):
-        result = self.service.GetEinheitSolar(
-            apiKey=self.api_key,
-            einheitMastrNummer=mastr_nr,
-            marktakteurMastrNummer=market_actor,
-        )
-        self.debug(result)
-        # Laengengrad
-        # Breitengrad
+    def get_generator_details(self, mastr_nr: str):
+        with self.client.settings(strict=False):
+            result = self.service.GetEinheitSolar(
+                apiKey=self.api_key,
+                einheitMastrNummer=mastr_nr,
+                marktakteurMastrNummer=self.mastr_nr,
+            )
+            self.log.info(result)
+            # Laengengrad
+            # Breitengrad
         pass
 
-    def get_mastr_detail_address(self, mastr_nr: str):
-        "https://www.marktstammdatenregister.de/MaStR/Schnellsuche/Schnellsuche?praefix=SEE&mastrNummer=967874079474"
-        return ""
+    def get_mastr_detail_url(self, mastr_reference: str):
+        if len(mastr_reference) != 15:
+            return None
+        if mastr_reference[:3] != "SEE":
+            return None
+        number = mastr_reference[3:]
+        base_url = (
+            "https://www.marktstammdatenregister.de/MaStR/Schnellsuche/"
+            "Schnellsuche?praefix=SEE&mastrNummer=%s"
+        )
+
+        r = requests.get(base_url % number)
+        if r.status_code != 200:
+            return None
+        detail_url = "https://www.marktstammdatenregister.de/%s" % r.json()["url"]
+        self.log.debug("Detail URL for %s: %s" % (mastr_reference, detail_url))
+        return detail_url
 
     def test_api_connection(self):
         with self.client.settings(strict=False):
@@ -160,24 +180,25 @@ if __name__ == "__main__":
     zip_code = 40667
 
     log.info("Retrieve generators filtered by postcode %s" % zip_code)
-    solar_generators = mc.get_solar_generators(zip_code=zip_code)
-
+    # solar_generators = mc.get_solar_generators(zip_code=zip_code)
+    solar_generators = []
     generator_count = len(solar_generators)
-    log.info("%d solar generators in %d " % (generator_count, zip_code))
-    # TODO extract function to sum up capacities
-    capacity_sum = Decimal()
-    commercial_generator_count = 0
-    commercial_capacity = 0
-    for generator in solar_generators:
-        capacity_sum += generator.capacity
-        if generator.is_commercial:
-            commercial_generator_count += 1
-            commercial_capacity += generator.capacity
-    log.info("Brutto capacity: %.2f kW" % capacity_sum)
-    percentage_commercial = commercial_generator_count / generator_count
-    log.info("%.2f %% commercial generators" % percentage_commercial)
-    percentage_commercial_cpcity = commercial_capacity / capacity_sum
-    log.info("%.2f %% commercial capacity" % percentage_commercial_cpcity)
-    # TODO further pages
-
-    mc.get_generator_details("SEE967874079474", "SNB971503120734")
+    if generator_count > 0:
+        log.info("%d solar generators in %d " % (generator_count, zip_code))
+        # TODO extract function to sum up capacities
+        capacity_sum = Decimal()
+        commercial_generator_count = 0
+        commercial_capacity = 0
+        for generator in solar_generators:
+            capacity_sum += generator.capacity
+            if generator.is_commercial:
+                commercial_generator_count += 1
+                commercial_capacity += generator.capacity
+        log.info("Brutto capacity: %.2f kW" % capacity_sum)
+        percentage_commercial = commercial_generator_count / generator_count
+        log.info("%.2f %% commercial generators" % percentage_commercial)
+        percentage_commercial_cpcity = commercial_capacity / capacity_sum
+        log.info("%.2f %% commercial capacity" % percentage_commercial_cpcity)
+        # TODO further pages
+    log.info("Get detail location of one generator")
+    mc.get_generator_details("SEE967874079474")
