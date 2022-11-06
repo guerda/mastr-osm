@@ -1,4 +1,4 @@
-from municipality import MunicipalityHistory
+from municipality import MunicipalityHistory, MunicipalityHistoryV1
 from datetime import datetime
 import pydantic
 
@@ -33,3 +33,20 @@ def test_load_from_json():
     assert len(m.solarGeneratorsMapped) == 3
     assert m.solarGenerators == [20, 34, 40]
     assert m.solarGeneratorsMapped == [1, 2, 3]
+
+
+def test_convert_to_v2():
+    mv1 = MunicipalityHistoryV1()
+    mv1.dates = [datetime(2022, 4, 1, 12, 1, 1, 1)]
+    mv1.solarGenerators = [2]
+    mv1.solarGeneratorsMapped = [1]
+    mv1.missingCommercialGenerators = ["SEE123456789012"]
+    mv2 = mv1.convert_to_v2()
+    assert mv2.dates == mv1.dates
+    assert mv2.solarGenerators == mv1.solarGenerators
+    assert mv2.solarGeneratorsMapped == mv1.solarGeneratorsMapped
+    assert len(mv2.missingCommercialGenerators) == len(mv1.missingCommercialGenerators)
+    assert (
+        mv2.missingCommercialGenerators[0].mastrReference
+        == mv1.missingCommercialGenerators[0].mastrReference
+    )
