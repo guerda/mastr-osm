@@ -18,10 +18,30 @@
         1
     ],
     "missingCommercialGenerators": [
-        "SEE906905795686",
-        "SEE963552012788",
-        "SEE909916910024",
-        "SEE952102234329",
-        "SEE959945986682"
+        {
+            "mastrReference": "SEE906905795686",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE963552012788",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE909916910024",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE952102234329",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE959945986682",
+            "lat": 0.0,
+            "lon": 0.0
+        }
     ]
 }

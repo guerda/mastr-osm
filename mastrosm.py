@@ -2,6 +2,7 @@ import json
 import logging
 import os
 import pydantic
+import requests
 import sys
 import time
 from datetime import datetime
@@ -112,20 +113,27 @@ if __name__ == "__main__":
         history_file = "docs/data/%s.json" % zip_code
         m: MunicipalityHistory = MunicipalityHistory()
         if os.path.isfile(history_file):
-            m = pydantic.parse_file_as(path=history_file, type_=MunicipalityHistory)
+            try:
+                m = pydantic.parse_file_as(path=history_file, type_=MunicipalityHistory)
+            except pydantic.error_wrappers.ValidationError:
+                log.exception("Could not load history file '%s'" % history_file)
         m.dates.append(datetime.now())
         # Download data from OSM and MaStR
-        solar_generators, solar_generators_mapped, missing_generators = partial_func(
-            zip_code
-        )
-        m.solarGenerators.append(solar_generators)
-        m.solarGeneratorsMapped.append(solar_generators_mapped)
-        m.missingCommercialGenerators = missing_generators
-        log.info("MaStR: %s, OSM: %s" % (solar_generators, solar_generators_mapped))
+        try:
+            solar_generators, solar_generators_mapped, missing_generators = partial_func(
+                zip_code
+            )
+            m.solarGenerators.append(solar_generators)
+            m.solarGeneratorsMapped.append(solar_generators_mapped)
+            m.missingCommercialGenerators = missing_generators
+            log.info("MaStR: %s, OSM: %s" % (solar_generators, solar_generators_mapped))
+            # Write data to data file
+            with open(history_file, "w") as f:
+                f.write(json.dumps(m, indent=4, default=pydantic_encoder))
+        except requests.exceptions.ConnectionError:
+            log.exception("Could not download data for zip code %s" % zip_code)
 
-        # Write data to data file
-        with open(history_file, "w") as f:
-            f.write(json.dumps(m, indent=4, default=pydantic_encoder))
+
         log.info("Waiting in order to not overload the server.")
         time.sleep(3)
         available_zip_codes.append({"zipCode": zip_code, "city": city})

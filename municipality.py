@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
-
+from pydantic.schema import Optional
 
 class CommercialGeneratorInfo(BaseModel):
     mastrReference: str
@@ -12,7 +12,7 @@ class MunicipalityHistory(BaseModel):
     dates: list[datetime] = []
     solarGenerators: list[int] = []
     solarGeneratorsMapped: list[int] = []
-    missingCommercialGenerators: list[CommercialGeneratorInfo] = None
+    missingCommercialGenerators: Optional[list[CommercialGeneratorInfo]] = None
 
 
 class MunicipalityHistoryV1(BaseModel):
@@ -28,11 +28,12 @@ class MunicipalityHistoryV1(BaseModel):
         mh.solarGeneratorsMapped = self.solarGeneratorsMapped
         
         if self.missingCommercialGenerators:
-            mh.missingCommercialGenerators = []
+            missingCommercialGenerators = []
             for ref in self.missingCommercialGenerators:
                 if ref:
                     cgi = CommercialGeneratorInfo(mastrReference=ref)
-                    mh.missingCommercialGenerators.append(cgi)
+                    missingCommercialGenerators.append(cgi)
+            mh.missingCommercialGenerators = missingCommercialGenerators
         return mh
 
 

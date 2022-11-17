@@ -21,12 +21,40 @@
         37
     ],
     "missingCommercialGenerators": [
-        "SEE904910888867",
-        "SEE993656161563",
-        "SEE951654675338",
-        "SEE970990203326",
-        "SEE997434975137",
-        "SEE937818440653",
-        "SEE998647808908"
+        {
+            "mastrReference": "SEE904910888867",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE993656161563",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE951654675338",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE970990203326",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE997434975137",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE937818440653",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE998647808908",
+            "lat": 0.0,
+            "lon": 0.0
+        }
     ]
 }

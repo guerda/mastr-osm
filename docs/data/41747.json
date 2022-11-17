@@ -27,27 +27,115 @@
         1
     ],
     "missingCommercialGenerators": [
-        "SEE933513117593",
-        "SEE954824046099",
-        "SEE924083828835",
-        "SEE922342878195",
-        "SEE961414671746",
-        "SEE998076198663",
-        "SEE983139250471",
-        "SEE971146882341",
-        "SEE958166070224",
-        "SEE973454900373",
-        "SEE995721010691",
-        "SEE946880751765",
-        "SEE998158094395",
-        "SEE929005145656",
-        "SEE903770658054",
-        "SEE980587306583",
-        "SEE932246733483",
-        "SEE912679851169",
-        "SEE946190975660",
-        "SEE913545879607",
-        "SEE983502289664",
-        "SEE960607870218"
+        {
+            "mastrReference": "SEE933513117593",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE954824046099",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE924083828835",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE922342878195",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE961414671746",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE998076198663",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE983139250471",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE971146882341",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE958166070224",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE973454900373",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE995721010691",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE946880751765",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE998158094395",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE929005145656",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE903770658054",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE980587306583",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE932246733483",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE912679851169",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE946190975660",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE913545879607",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE983502289664",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE960607870218",
+            "lat": 0.0,
+            "lon": 0.0
+        }
     ]
 }

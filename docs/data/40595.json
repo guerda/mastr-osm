@@ -18,9 +18,25 @@
         7
     ],
     "missingCommercialGenerators": [
-        "SEE978591217995",
-        "SEE964557148847",
-        "SEE996593931664",
-        "SEE989946751118"
+        {
+            "mastrReference": "SEE978591217995",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE964557148847",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE996593931664",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE989946751118",
+            "lat": 0.0,
+            "lon": 0.0
+        }
     ]
 }
