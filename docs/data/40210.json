@@ -30,7 +30,15 @@
         8
     ],
     "missingCommercialGenerators": [
-        "SEE916738430463",
-        "SEE982261916569"
+        {
+            "mastrReference": "SEE916738430463",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE982261916569",
+            "lat": 0.0,
+            "lon": 0.0
+        }
     ]
 }

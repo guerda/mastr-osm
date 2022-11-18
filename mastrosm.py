@@ -120,9 +120,11 @@ if __name__ == "__main__":
         m.dates.append(datetime.now())
         # Download data from OSM and MaStR
         try:
-            solar_generators, solar_generators_mapped, missing_generators = partial_func(
-                zip_code
-            )
+            (
+                solar_generators,
+                solar_generators_mapped,
+                missing_generators,
+            ) = partial_func(zip_code)
             m.solarGenerators.append(solar_generators)
             m.solarGeneratorsMapped.append(solar_generators_mapped)
             m.missingCommercialGenerators = missing_generators
@@ -132,7 +134,6 @@ if __name__ == "__main__":
                 f.write(json.dumps(m, indent=4, default=pydantic_encoder))
         except requests.exceptions.ConnectionError:
             log.exception("Could not download data for zip code %s" % zip_code)
-
 
         log.info("Waiting in order to not overload the server.")
         time.sleep(3)
