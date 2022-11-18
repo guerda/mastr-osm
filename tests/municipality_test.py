@@ -22,7 +22,7 @@ def test_represent_as_json():
     assert (
         """{"dates": ["2022-01-31T14:01:03.000003"], "solarGenerators": [0, 1, 2],"""
         """ "solarGeneratorsMapped": [0, 0, 1],"""
-        """ "missingCommercialGenerators": []}""" == m_json
+        """ "missingCommercialGenerators": null}""" == m_json
     )
 
 
@@ -48,5 +48,5 @@ def test_convert_to_v2():
     assert len(mv2.missingCommercialGenerators) == len(mv1.missingCommercialGenerators)
     assert (
         mv2.missingCommercialGenerators[0].mastrReference
-        == mv1.missingCommercialGenerators[0].mastrReference
+        == mv1.missingCommercialGenerators[0]
     )
