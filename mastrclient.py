@@ -71,6 +71,10 @@ class MastrClient:
         )
         detail_url = self.get_mastr_detail_url(mastr_reference)
         sg.mastr_detail_url = detail_url
+        # Add location
+        lat, lon = self.get_generator_details(mastr_reference)
+        sg.lat = lat
+        sg.lon = lon
         return sg
 
     def get_solar_generators(self, zip_code: str):
@@ -109,11 +113,7 @@ class MastrClient:
             self.log.debug(result)
             lat = result["Breitengrad"]
             lon = result["Laengengrad"]
-            self.log.info(lat)
-            self.log.info(lon)
-            # Laengengrad
-            # Breitengrad
-        pass
+            return lat, lon
 
     def get_mastr_detail_url(self, mastr_reference: str):
         if len(mastr_reference) != 15:
@@ -205,4 +205,4 @@ if __name__ == "__main__":
         log.info("%.2f %% commercial capacity" % percentage_commercial_cpcity)
         # TODO further pages
     log.info("Get detail location of one generator")
-    mc.get_generator_details("SEE967874079474")
+    log.info(mc.get_generator_details("SEE967874079474"))

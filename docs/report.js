@@ -94,17 +94,29 @@ function load_zip_code_data(zip_code) {
       progressPrivate = document.getElementById("progress-private");
 
       // List missing commercial solar generators
-      // https://www.marktstammdatenregister.de/MaStR/Schnellsuche/Schnellsuche?praefix=SEE&mastrNummer=967874079474
       var missingGeneratorsElement = document.getElementById("missing-commercial-generators");
-      console.log(progressData["missingCommercialGenerators"])
+      missingGeneratorsElement.replaceChildren();
       var missingGenerators = progressData["missingCommercialGenerators"]
       for (i in missingGenerators) {
-        var mastrId = missingGenerators[i];
+        var missingGenerator = missingGenerators[i];
+        // MaStR Link
+        var mastrReference = missingGenerator["mastrReference"];
         var mastrLink = document.createElement("a");
-        mastrLink.innerHTML = mastrId;
-        mastrLink.href = "https://www.marktstammdatenregister.de/MaStR/Schnellsuche/Schnellsuche?praefix=SEE&mastrNummer="+ mastrId.substr(3);
+        mastrLink.innerHTML = mastrReference;
+        mastrLink.href = "https://www.marktstammdatenregister.de/MaStR/Schnellsuche/Schnellsuche?praefix=SEE&mastrNummer="+ mastrReference.substr(3);
+        
+        // OSM Edit link
+        var osmEditLink = document.createElement("a");
+        var lat = missingGenerator["lat"];
+        var lon = missingGenerator["lon"];
+        osmEditLink.href = "https://www.openstreetmap.org/#map=19/"+lon+"/"+lat;
+        osmEditLink.classList = "btn btn-primary"
+        osmEditLink.innerHTML = "Edit on OSM";
+        
         var generatorListItem = document.createElement("li");
         generatorListItem.appendChild(mastrLink);
+        generatorListItem.append(" ");
+        generatorListItem.appendChild(osmEditLink);
         missingGeneratorsElement.appendChild(generatorListItem);
       }
     });
@@ -118,3 +130,4 @@ document
   .addEventListener("input", function (event) {
     zipCodeSelect(event);
   });
+

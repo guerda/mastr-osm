@@ -50,12 +50,18 @@ def process_zip_code(
     missing_generators = mastr_refs - osm_refs
     log.info(missing_generators)
 
+    missing_generators_json = []
+    for missing_generator in missing_generators:
+        missing_generators_json.append(
+            {"mastrReference": missing_generator, "lat": 0.0, "lon": 0.0}
+        )
+
     log.debug("Got %d generators in OpenStreetMap" % count_osm)
     mapped_quota = count_osm / count_mastr
     log.debug(
         "%.2f %% solar generators captured in %s in OSM" % (mapped_quota, zip_code)
     )
-    return count_mastr, count_osm, missing_generators
+    return count_mastr, count_osm, missing_generators_json
 
 
 if __name__ == "__main__":

@@ -1,6 +1,4 @@
-{
-    "dates": [],
-    "solarGenerators": [],
-    "solarGeneratorsMapped": [],
-    "missingCommercialGenerators": null
-}
+[
+  { "city": "Leverkusen", "zipCode": "51373" },
+  { "city": "Meerbusch Büderich", "zipCode": "40667" }
+]
