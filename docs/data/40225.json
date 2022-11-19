@@ -4,16 +4,19 @@
         "2022-10-25T20:50:40.800417",
         "2022-10-29T14:29:28.740785",
         "2022-10-29T14:48:44.675783",
-        "2022-10-30T13:53:42.509798"
+        "2022-10-30T13:53:42.509798",
+        "2022-11-18T21:29:47.360586"
     ],
     "solarGenerators": [
         32,
         32,
         32,
         32,
-        32
+        32,
+        35
     ],
     "solarGeneratorsMapped": [
+        6,
         6,
         6,
         6,
@@ -22,17 +25,12 @@
     ],
     "missingCommercialGenerators": [
         {
+            "mastrReference": "SEE977760796583",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
             "mastrReference": "SEE917577052595",
-            "lat": 0.0,
-            "lon": 0.0
-        },
-        {
-            "mastrReference": "SEE930406127202",
-            "lat": 0.0,
-            "lon": 0.0
-        },
-        {
-            "mastrReference": "SEE987565438847",
             "lat": 0.0,
             "lon": 0.0
         },
@@ -42,7 +40,12 @@
             "lon": 0.0
         },
         {
-            "mastrReference": "SEE977760796583",
+            "mastrReference": "SEE987565438847",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE930406127202",
             "lat": 0.0,
             "lon": 0.0
         },

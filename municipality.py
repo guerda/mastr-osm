@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from datetime import datetime
 from pydantic.schema import Optional
 
+
 class CommercialGeneratorInfo(BaseModel):
     mastrReference: str
     lat: float = 0.0
@@ -26,7 +27,7 @@ class MunicipalityHistoryV1(BaseModel):
         mh.dates = self.dates
         mh.solarGenerators = self.solarGenerators
         mh.solarGeneratorsMapped = self.solarGeneratorsMapped
-        
+
         if self.missingCommercialGenerators:
             missingCommercialGenerators = []
             for ref in self.missingCommercialGenerators:
@@ -46,11 +47,13 @@ if __name__ == "__main__":
     for file_name in glob("docs/data/*.json"):
         print(file_name)
         try:
-            m = pydantic.parse_file_as(path=file_name, type_=MunicipalityHistoryV1)
-            mv2 = m.convert_to_v2()
-            with open(file_name, "w") as f:
-                f.write(
-                    json.dumps(mv2, indent=4, default=pydantic_encoder)
-                )
+            m = pydantic.parse_file_as(path=file_name, type_=MunicipalityHistory)
+            print("Parsed as V2, skipping")
         except pydantic.error_wrappers.ValidationError:
-            print("Parsing failed, skipping %s" % file_name)
+            try:
+                m = pydantic.parse_file_as(path=file_name, type_=MunicipalityHistoryV1)
+                mv2 = m.convert_to_v2()
+                with open(file_name, "w") as f:
+                    f.write(json.dumps(mv2, indent=4, default=pydantic_encoder))
+            except pydantic.error_wrappers.ValidationError:
+                print("Parsing failed, skipping %s" % file_name)

@@ -1,31 +1,53 @@
 {
     "dates": [
-        "2022-10-25T20:54:01.260866",
-        "2022-10-29T14:31:36.179351",
-        "2022-10-29T14:50:20.965166",
-        "2022-10-30T13:55:38.005103"
+        "2022-11-18T21:34:26.822360"
     ],
     "solarGenerators": [
-        329,
-        330,
-        330,
-        330
+        338
     ],
     "solarGeneratorsMapped": [
-        0,
-        0,
-        0,
         0
     ],
     "missingCommercialGenerators": [
-        "SEE941225621987",
-        "SEE932848155126",
-        "SEE957228548329",
-        "SEE973991627085",
-        "SEE943739191604",
-        "SEE902370432637",
-        "SEE945841631405",
-        "SEE997658171599",
-        null
+        {
+            "mastrReference": "SEE997658171599",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE932848155126",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE957228548329",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE943739191604",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE973991627085",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE941225621987",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE945841631405",
+            "lat": 0.0,
+            "lon": 0.0
+        },
+        {
+            "mastrReference": "SEE902370432637",
+            "lat": 0.0,
+            "lon": 0.0
+        }
     ]
 }

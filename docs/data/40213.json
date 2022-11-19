@@ -1,6 +1,6 @@
 {
     "dates": [
-        "2022-11-17T20:15:48.562159"
+        "2022-11-18T21:28:21.362839"
     ],
     "solarGenerators": [
         1
@@ -9,6 +9,5 @@
         0
     ],
     "missingCommercialGenerators": [
-        null
     ]
 }
