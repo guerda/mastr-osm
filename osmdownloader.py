@@ -10,7 +10,7 @@ class OsmDownloader:
         self.api = overpass.API(timeout=40)
         self.log = logging.getLogger("osmdownloader")
 
-    def get_solar_generators(self, zip_code: str):
+    def get_solar_generators(self, zip_code: str) -> list[SolarGenerator]:
         while self.api.slots_available == 0:
             time.sleep(5)
         r = self.api.get(
@@ -30,7 +30,7 @@ class OsmDownloader:
             # sum_power += power
         return generators
 
-    def create_generator(self, features):
+    def create_generator(self, features) -> SolarGenerator:
         generator = SolarGenerator()
         # Is generator commercial?
         generator.is_commercial = (

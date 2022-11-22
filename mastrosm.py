@@ -12,6 +12,16 @@ from pydantic.json import pydantic_encoder
 from mastrclient import MastrClient
 from municipality import MunicipalityHistory
 from rich.logging import RichHandler
+from generator import SolarGenerator
+
+
+def generator_to_history_info(generator: SolarGenerator):
+    result = {}
+    result["mastrReference"] = generator.mastr_reference
+    result["lat"] = generator.lat
+    result["lon"] = generator.lon
+    result["mastrDetailUrl"] = generator.mastr_detail_url
+    return result
 
 
 def process_zip_code(
@@ -35,33 +45,32 @@ def process_zip_code(
     """
     log.info("Downloading zip code %s" % zip_code)
     # MaStR
+    log.info("Load data from MaStR...")
     solar_generators = mastrclient.get_solar_generators(zip_code=zip_code)
     count_mastr = len(solar_generators)
 
     # OpenStreetMap
+    log.info("Load data from OSM...")
     solar_generators_osm = osmdownloader.get_solar_generators(zip_code=zip_code)
     count_osm = len(solar_generators_osm)
 
     # Missing commercial generators in OSM
-    mastr_refs = set(
-        [g.mastr_reference if g.is_commercial else None for g in solar_generators]
-    )
     osm_refs = set([g.mastr_reference for g in solar_generators_osm])
-    missing_generators = mastr_refs - osm_refs
-    log.info(missing_generators)
 
-    missing_generators_json = []
-    for missing_generator in missing_generators:
-        missing_generators_json.append(
-            {"mastrReference": missing_generator, "lat": 0.0, "lon": 0.0}
-        )
+    missing_generators = []
+    for g in solar_generators:
+        if g.is_commercial:
+            if g.mastr_reference not in osm_refs:
+                gh = generator_to_history_info(g)
+                missing_generators.append(gh)
+    log.info(missing_generators)
 
     log.debug("Got %d generators in OpenStreetMap" % count_osm)
     mapped_quota = count_osm / count_mastr
     log.debug(
         "%.2f %% solar generators captured in %s in OSM" % (mapped_quota, zip_code)
     )
-    return count_mastr, count_osm, missing_generators_json
+    return count_mastr, count_osm, missing_generators
 
 
 if __name__ == "__main__":

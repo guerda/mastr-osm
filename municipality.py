@@ -22,7 +22,7 @@ class MunicipalityHistoryV1(BaseModel):
     solarGeneratorsMapped: list[int] = []
     missingCommercialGenerators: list[str] = None
 
-    def convert_to_v2(self):
+    def convert_to_v2(self) -> MunicipalityHistory:
         mh = MunicipalityHistory()
         mh.dates = self.dates
         mh.solarGenerators = self.solarGenerators

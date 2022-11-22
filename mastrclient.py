@@ -49,7 +49,7 @@ class MastrClient:
         )
         self.zip_code_city_pattern = re.compile("^\\d{5} [-\\w]{2,}")
 
-    def create_generator(self, generator):
+    def create_generator(self, generator) -> SolarGenerator:
         """Creates a generator object from a MaStR object.
 
         Args:
@@ -77,7 +77,7 @@ class MastrClient:
         sg.lon = lon
         return sg
 
-    def get_solar_generators(self, zip_code: str):
+    def get_solar_generators(self, zip_code: str) -> list[SolarGenerator]:
         """Download solar generators for one zip codes
 
         Args:
@@ -88,20 +88,24 @@ class MastrClient:
             list[SolarGenerator]: List of SolarGenerator for easy analysis
         """
         with self.client.settings(strict=False):
-            result = self.service.GetGefilterteListeStromErzeuger(
-                apiKey=self.api_key,
-                postleitzahl=zip_code,
-                marktakteurMastrNummer=self.mastr_nr,
-                limit=self.ITEM_CALL_LIMIT,
-            )
-            self.log.debug("Return code: %s" % result["Ergebniscode"])
-            self.log.debug("Got %d generators from MaStR" % len(result["Einheiten"]))
-            solar_generators = []
-            for generator in result["Einheiten"]:
-                if "Solareinheit" == generator["Einheittyp"]:
-                    sg = self.create_generator(generator)
-                    solar_generators.append(sg)
-            return solar_generators
+            try:
+                result = self.service.GetGefilterteListeStromErzeuger(
+                    apiKey=self.api_key,
+                    postleitzahl=zip_code,
+                    marktakteurMastrNummer=self.mastr_nr,
+                    limit=self.ITEM_CALL_LIMIT,
+                )
+                self.log.debug("Return code: %s" % result["Ergebniscode"])
+                self.log.debug("Got %d generators from MaStR" % len(result["Einheiten"]))
+                solar_generators = []
+                for generator in result["Einheiten"]:
+                    if "Solareinheit" == generator["Einheittyp"]:
+                        sg = self.create_generator(generator)
+                        solar_generators.append(sg)
+                return solar_generators
+            except AttributeError:
+                self.log.error("Could not retrieve data from MaStR for %s" % zip_code)
+                return None
 
     def get_generator_details(self, mastr_nr: str):
         with self.client.settings(strict=False):
@@ -129,7 +133,7 @@ class MastrClient:
         r = requests.get(base_url % number)
         if r.status_code != 200:
             return None
-        detail_url = "https://www.marktstammdatenregister.de/%s" % r.json()["url"]
+        detail_url = "https://www.marktstammdatenregister.de%s" % r.json()["url"]
         self.log.debug("Detail URL for %s: %s" % (mastr_reference, detail_url))
         return detail_url
 
