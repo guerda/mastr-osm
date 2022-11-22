@@ -1,3 +1,8 @@
+const userLocale = navigator.languages && navigator.languages.length
+  ? navigator.languages[0]
+  : navigator.language;
+
+
 function zipCodeSelect(event) {
   var zipCode = event.target.value;
   var city = event.target.selectedOptions[0].innerHTML;
@@ -27,6 +32,12 @@ function load_zip_code_data(zip_code) {
   fetch("data/" + zip_code + ".json")
     .then((response) => response.json())
     .then((progressData) => {
+      // Set last update date
+      
+      var lastUpdateElement = document.getElementById("last-update");
+      var lastUpdate = progressData["dates"][progressData["dates"].length-1];
+      lastUpdateElement.innerHTML = lastUpdate.toLocaleString(userLocale);
+
       // Overall progress plot
       var progressPlotElement = document.getElementById("progress-plot");
       var data = [
@@ -67,17 +78,6 @@ function load_zip_code_data(zip_code) {
 
       // Progress bars
       progressAll = document.getElementById("progress-all");
-      console.log(
-        progressData["solarGeneratorsMapped"][
-          progressData["solarGeneratorsMapped"].length - 1
-        ]
-      );
-      console.log(
-        progressData["solarGenerators"][
-          progressData["solarGenerators"].length - 1
-        ]
-      );
-
       progress =
         progressData["solarGeneratorsMapped"][
           progressData["solarGeneratorsMapped"].length - 1
@@ -102,14 +102,20 @@ function load_zip_code_data(zip_code) {
         // MaStR Link
         var mastrReference = missingGenerator["mastrReference"];
         var mastrLink = document.createElement("a");
+        mastrLink.target = "_blank";
         mastrLink.innerHTML = mastrReference;
-        mastrLink.href = "https://www.marktstammdatenregister.de/MaStR/Schnellsuche/Schnellsuche?praefix=SEE&mastrNummer="+ mastrReference.substr(3);
+        if (missingGenerator["mastrDetailUrl"]) {
+          mastrLink.href = missingGenerator["mastrDetailUrl"];
+        }
         
         // OSM Edit link
         var osmEditLink = document.createElement("a");
         var lat = missingGenerator["lat"];
         var lon = missingGenerator["lon"];
-        osmEditLink.href = "https://www.openstreetmap.org/#map=19/"+lon+"/"+lat;
+        osmEditLink.target = "_blank";
+        if (lat != 0 && lon != 0) {
+          osmEditLink.href = "https://www.openstreetmap.org/edit#map=19/"+lat+"/"+lon;
+        }
         osmEditLink.classList = "btn btn-primary"
         osmEditLink.innerHTML = "Edit on OSM";
         
