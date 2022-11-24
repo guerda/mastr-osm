@@ -74,12 +74,15 @@ def process_zip_code(
 
 
 if __name__ == "__main__":
+    level = os.getenv("LOGLEVEL", "INFO")
     FORMAT = "%(message)s"
     logging.basicConfig(
-        level="INFO", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
+        level=level, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
     )
 
     log = logging.getLogger("mastrclient")
+
+    
 
     # Check if MaStR API key and MaStR number are provided
     api_key = os.getenv("MASTR_API_KEY")

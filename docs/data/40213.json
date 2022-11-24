@@ -1,13 +1,15 @@
 {
     "dates": [
-        "2022-11-18T21:28:21.362839"
+        "2022-11-18T21:28:21.362839",
+        "2022-11-24T22:26:19.820327"
     ],
     "solarGenerators": [
+        1,
         1
     ],
     "solarGeneratorsMapped": [
+        0,
         0
     ],
-    "missingCommercialGenerators": [
-    ]
+    "missingCommercialGenerators": []
 }
