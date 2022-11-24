@@ -87,7 +87,7 @@ class MastrClient:
         Returns:
             list[SolarGenerator]: List of SolarGenerator for easy analysis
         """
-        with self.client.settings(strict=False):
+        with self.client.settings():
             try:
                 result = self.service.GetGefilterteListeStromErzeuger(
                     apiKey=self.api_key,

@@ -1,18 +1,22 @@
 {
     "dates": [
-        "2022-11-18T21:28:41.328051"
+        "2022-11-18T21:28:41.328051",
+        "2022-11-24T22:26:41.911826"
     ],
     "solarGenerators": [
+        5,
         5
     ],
     "solarGeneratorsMapped": [
+        0,
         0
     ],
     "missingCommercialGenerators": [
         {
             "mastrReference": "SEE968949953958",
-            "lat": 0.0,
-            "lon": 0.0
+            "lat": 51.217113,
+            "lon": 6.778671,
+            "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/4553230"
         }
     ]
 }
