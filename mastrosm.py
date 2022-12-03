@@ -46,7 +46,10 @@ def process_zip_code(
     log.info("Downloading zip code %s" % zip_code)
     # MaStR
     log.info("Load data from MaStR...")
+    start_time = datetime.now()
     solar_generators = mastrclient.get_solar_generators(zip_code=zip_code)
+    stop_time = datetime.now()
+    log.info("Retrieving MaStR data took %s" % (stop_time-start_time))
     count_mastr = len(solar_generators)
 
     # OpenStreetMap
@@ -81,8 +84,6 @@ if __name__ == "__main__":
     )
 
     log = logging.getLogger("mastrclient")
-
-    
 
     # Check if MaStR API key and MaStR number are provided
     api_key = os.getenv("MASTR_API_KEY")
@@ -128,6 +129,7 @@ if __name__ == "__main__":
     partial_func = partial(process_zip_code, mastrclient=mc, osmdownloader=od, log=log)
     for zip_code, city in zip_codes:
         # Load historic data for this municipality
+        available_zip_codes.append({"zipCode": zip_code, "city": city})
         history_file = "docs/data/%s.json" % zip_code
         m: MunicipalityHistory = MunicipalityHistory()
         if os.path.isfile(history_file):
@@ -135,6 +137,10 @@ if __name__ == "__main__":
                 m = pydantic.parse_file_as(path=history_file, type_=MunicipalityHistory)
             except pydantic.error_wrappers.ValidationError:
                 log.exception("Could not load history file '%s'" % history_file)
+        # Skip if data is newer than 24 hours
+        if (datetime.now() - m.dates[-1]).days < 1:
+            continue
+
         m.dates.append(datetime.now())
         # Download data from OSM and MaStR
         try:
@@ -155,7 +161,7 @@ if __name__ == "__main__":
 
         log.info("Waiting in order to not overload the server.")
         time.sleep(3)
-        available_zip_codes.append({"zipCode": zip_code, "city": city})
+        
 
     # Write processed zip codes to file for selection in the UI
     with open("docs/data/available-zip-codes.json", "w") as f:

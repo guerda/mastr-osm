@@ -3,15 +3,18 @@
         "2022-10-25T20:56:10.618353",
         "2022-10-29T14:32:33.160515",
         "2022-10-29T14:51:06.290777",
-        "2022-10-30T13:56:29.003598"
+        "2022-10-30T13:56:29.003598",
+        "2022-12-03T13:10:09.290814"
     ],
     "solarGenerators": [
         148,
         148,
         148,
-        148
+        148,
+        155
     ],
     "solarGeneratorsMapped": [
+        7,
         7,
         7,
         7,
@@ -20,23 +23,27 @@
     "missingCommercialGenerators": [
         {
             "mastrReference": "SEE978591217995",
-            "lat": 0.0,
-            "lon": 0.0
-        },
-        {
-            "mastrReference": "SEE964557148847",
-            "lat": 0.0,
-            "lon": 0.0
-        },
-        {
-            "mastrReference": "SEE996593931664",
-            "lat": 0.0,
-            "lon": 0.0
+            "lat": 51.13291,
+            "lon": 6.906932,
+            "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/2171724"
         },
         {
             "mastrReference": "SEE989946751118",
-            "lat": 0.0,
-            "lon": 0.0
+            "lat": 51.131843,
+            "lon": 6.917505,
+            "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/2287790"
+        },
+        {
+            "mastrReference": "SEE964557148847",
+            "lat": 51.131286,
+            "lon": 6.916839,
+            "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/2770496"
+        },
+        {
+            "mastrReference": "SEE996593931664",
+            "lat": 51.14973,
+            "lon": 6.897774,
+            "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/4099024"
         }
     ]
 }
