@@ -120,6 +120,7 @@ function load_zip_code_data(zip_code) {
         osmEditLink.innerHTML = "Edit on OSM";
         
         var generatorListItem = document.createElement("li");
+        generatorListItem.className = "fixed";
         generatorListItem.appendChild(mastrLink);
         generatorListItem.append(" ");
         generatorListItem.appendChild(osmEditLink);

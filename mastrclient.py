@@ -4,6 +4,7 @@ import re
 import requests
 import sys
 import zeepdatefix
+import zeep
 from decimal import Decimal
 from rich.logging import RichHandler
 from zeep import Client
@@ -11,6 +12,7 @@ from zeep.cache import SqliteCache
 from zeep.transports import Transport
 from generator import SolarGenerator
 import tempfile
+from datetime import datetime
 
 
 class PowerGenerator:
@@ -31,7 +33,7 @@ class MastrClient:
         self.log = logging.getLogger(self.__class__.__name__)
         self.log.info("Create and test MaStR API client...")
         zeepdatefix.inject_date_fix()
-        self.ITEM_CALL_LIMIT = None  # 10000000
+        self.ITEM_CALL_LIMIT = 4000  # None  # 10,000,000
         self.api_key = api_key
         self.mastr_nr = mastr_nr
         cache_file = "%s/zeep-cache.db" % tempfile.gettempdir()
@@ -69,7 +71,10 @@ class MastrClient:
             is_commercial=is_commercial,
             mastr_reference=mastr_reference,
         )
+        start_time = datetime.now()
         detail_url = self.get_mastr_detail_url(mastr_reference)
+        stop_time = datetime.now()
+        self.log.debug("MaStR detail URL call took %s" % (stop_time - start_time))
         sg.mastr_detail_url = detail_url
         # Add location
         lat, lon = self.get_generator_details(mastr_reference)
@@ -89,14 +94,19 @@ class MastrClient:
         """
         with self.client.settings():
             try:
+                start_time = datetime.now()
                 result = self.service.GetGefilterteListeStromErzeuger(
                     apiKey=self.api_key,
                     postleitzahl=zip_code,
                     marktakteurMastrNummer=self.mastr_nr,
                     limit=self.ITEM_CALL_LIMIT,
                 )
+                stop_time = datetime.now()
+                self.log.info("Call to MaStR API took %s " % (stop_time - start_time))
                 self.log.debug("Return code: %s" % result["Ergebniscode"])
-                self.log.debug("Got %d generators from MaStR" % len(result["Einheiten"]))
+                self.log.debug(
+                    "Got %d generators from MaStR" % len(result["Einheiten"])
+                )
                 solar_generators = []
                 for generator in result["Einheiten"]:
                     if "Solareinheit" == generator["Einheittyp"]:
@@ -104,6 +114,9 @@ class MastrClient:
                         solar_generators.append(sg)
                 return solar_generators
             except AttributeError:
+                self.log.error("Could not retrieve data from MaStR for %s" % zip_code)
+                return None
+            except zeep.exceptions.Fault:
                 self.log.error("Could not retrieve data from MaStR for %s" % zip_code)
                 return None
 
@@ -138,7 +151,7 @@ class MastrClient:
         return detail_url
 
     def test_api_connection(self):
-        with self.client.settings(strict=False):
+        with self.client.settings():
             response = self.client.service.GetLokaleUhrzeitMitAuthentifizierung(
                 apiKey=self.api_key,
             )
