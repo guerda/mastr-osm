@@ -76,10 +76,6 @@ class MastrClient:
         stop_time = datetime.now()
         self.log.debug("MaStR detail URL call took %s" % (stop_time - start_time))
         sg.mastr_detail_url = detail_url
-        # Add location
-        lat, lon = self.get_generator_details(mastr_reference)
-        sg.lat = lat
-        sg.lon = lon
         return sg
 
     def get_solar_generators(self, zip_code: str) -> list[SolarGenerator]:
