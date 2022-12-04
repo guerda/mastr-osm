@@ -49,7 +49,7 @@ def process_zip_code(
     start_time = datetime.now()
     solar_generators = mastrclient.get_solar_generators(zip_code=zip_code)
     stop_time = datetime.now()
-    log.info("Retrieving MaStR data took %s" % (stop_time-start_time))
+    log.info("Retrieving MaStR data took %s" % (stop_time - start_time))
     count_mastr = len(solar_generators)
 
     # OpenStreetMap
@@ -64,6 +64,11 @@ def process_zip_code(
     for g in solar_generators:
         if g.is_commercial:
             if g.mastr_reference not in osm_refs:
+                # Add location
+                lat, lon = mastrclient.get_generator_details(g.mastr_reference)
+                g.lat = lat
+                g.lon = lon
+
                 gh = generator_to_history_info(g)
                 missing_generators.append(gh)
     log.info(missing_generators)
@@ -125,11 +130,9 @@ if __name__ == "__main__":
     log.info("Processing %d zip codes..." % len(zip_codes))
 
     # Download data for each zip code
-    available_zip_codes = []
     partial_func = partial(process_zip_code, mastrclient=mc, osmdownloader=od, log=log)
     for zip_code, city in zip_codes:
         # Load historic data for this municipality
-        available_zip_codes.append({"zipCode": zip_code, "city": city})
         history_file = "docs/data/%s.json" % zip_code
         m: MunicipalityHistory = MunicipalityHistory()
         if os.path.isfile(history_file):
@@ -161,7 +164,11 @@ if __name__ == "__main__":
 
         log.info("Waiting in order to not overload the server.")
         time.sleep(3)
-        
+
+    available_zip_codes = []
+    for zip_code, city in zip_codes:
+        if os.path.isfile("docs/data/%s.json" % zip_code):
+            available_zip_codes.append({"zipCode": zip_code, "city": city})
 
     # Write processed zip codes to file for selection in the UI
     with open("docs/data/available-zip-codes.json", "w") as f:
