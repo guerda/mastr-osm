@@ -114,7 +114,7 @@ function load_zip_code_data(zip_code) {
         var lon = missingGenerator["lon"];
         osmEditLink.target = "_blank";
         if (lat != 0 && lon != 0) {
-          osmEditLink.href = "https://www.openstreetmap.org/edit#map=19/"+lat+"/"+lon;
+          osmEditLink.href = "https://www.openstreetmap.org/edit#map=19/"+lat+"/"+lon+"&hashtags=%23mastr-osm";
         }
         osmEditLink.classList = "btn btn-primary"
         osmEditLink.innerHTML = "Edit on OSM";
