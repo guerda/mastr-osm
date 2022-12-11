@@ -36,14 +36,18 @@ function handleCopyTagsItemClick(event) {
   generator:source=solar
   generator:type=solar_photovoltaic_panel
   location=roof
-  generator:output:electricity=XXX kWp
+  generator:output:electricity=`+dataSet["capacity"]+` kWp
   ref=`+ dataSet["mastrnr"];
+  var toast = document.getElementById("copy-toast");
+  
   navigator.clipboard.writeText(text).then(function() {
-    console.log('Copied suggested tags to the clipboard');
-    event.target.className = "btn btn-success";
+    console.log("Copied suggested OSM tags to the clipboard");
+    toast.innerHTML = "Copied suggested tags to the clipboard";
+    toast.className = "fade-in toast-success";
   }, function(err) {
-    console.error('Could not copy suggested tags to the clipboard', err);
-    event.target.className = "btn btn-danger";
+    console.error("Could not copy suggested tags to the clipboard", err);
+    toast.innerHTML = "Could not copy suggested tags to the clipboard";
+    toast.className = "fade-in toast-danger";
   });
 }
 
@@ -120,10 +124,12 @@ function load_zip_code_data(zip_code) {
         var missingGenerator = missingGenerators[i];
         // MaStR Link
         var mastrReference = missingGenerator["mastrReference"];
+        var capacity = missingGenerator["capacity"];
+
         var mastrLink = document.createElement("a");
         mastrLink.className = "fixed";
         mastrLink.target = "_blank";
-        mastrLink.innerHTML = mastrReference;
+        mastrLink.innerHTML = mastrReference +" ("+capacity+" kWp)";
         if (missingGenerator["mastrDetailUrl"]) {
           mastrLink.href = missingGenerator["mastrDetailUrl"];
         }
@@ -137,12 +143,13 @@ function load_zip_code_data(zip_code) {
           osmEditLink.href = "https://www.openstreetmap.org/edit#map=19/"+lat+"/"+lon+"&hashtags=%23mastr-osm";
         }
         osmEditLink.classList = "btn btn-primary"
-        osmEditLink.innerHTML = "Edit on OSM";
+        osmEditLink.innerHTML = "Add to OSM";
 
         var copyTagsItem = document.createElement("a");
         copyTagsItem.className = "btn btn-secondary";
-        copyTagsItem.innerHTML = "Copy suggested tags";
+        copyTagsItem.innerHTML = "Copy OSM tags";
         copyTagsItem.dataset["mastrnr"] = mastrReference;
+        copyTagsItem.dataset["capacity"] = capacity;
         copyTagsItem.onclick = function(event) {
           handleCopyTagsItemClick(event);
         };

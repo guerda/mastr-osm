@@ -11,10 +11,14 @@
     <style type="text/css">
       .fixed { font-family: monospace;}
       #missing-commercial-generators li { line-height: 275%; }
+      div#copy-toast { padding: 1em; text-align: center; position: absolute; top:20em; z-index:100; width:100%;}
+      div#copy-toast.toast-success { background-color: rgba(114, 186, 120, 0.742); }
+      div#copy-toast.toast-danger { background-color: rgba(186, 114, 114, 0.742); }
     </style>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
   </head>
   <body>
+    <div id="copy-toast" class="fade"></div>
     <div class="container">
       <nav class="navbar navbar-dark bg-dark" style="padding: 1em">
         <div>
@@ -69,6 +73,8 @@
       
       <ul id="missing-commercial-generators">
       </ul>
+
+      
     </div>
 
     <footer class="footer bg-faded text-muted" role="contentinfo">

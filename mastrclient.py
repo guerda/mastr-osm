@@ -61,11 +61,10 @@ class MastrClient:
             SolarGenerator: plain object containing information about commercial usage,
               MaStR number, and capacity
         """
-        # TODO add location as close as possible
-        # TODO add page URL
         capacity = generator["Bruttoleistung"]
         is_commercial = not self.zip_code_city_pattern.match(generator["Standort"])
         mastr_reference = generator["EinheitMastrNummer"]
+
         sg = SolarGenerator(
             capacity=capacity,
             is_commercial=is_commercial,
