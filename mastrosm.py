@@ -142,8 +142,8 @@ if __name__ == "__main__":
             except pydantic.error_wrappers.ValidationError:
                 log.exception("Could not load history file '%s'" % history_file)
         # Skip if data is newer than 24 hours
-        #if (datetime.now() - m.dates[-1]).days < 1:
-        #    continue
+        if (datetime.now() - m.dates[-1]).days < 1:
+            continue
 
         m.dates.append(datetime.now())
         # Download data from OSM and MaStR
