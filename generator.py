@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class SolarGenerator(BaseModel):
-    capacity: int = None
+    capacity: float = None
     is_commercial: bool = False
     mastr_reference: str = None
     osm_id: int = None
