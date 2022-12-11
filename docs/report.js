@@ -28,6 +28,25 @@ function load_available_zip_codes() {
     });
 }
 
+function handleCopyTagsItemClick(event) {
+  var dataSet = event.target.dataset;
+  console.log(dataSet);
+  var text = `power=generator
+  generator:method=photovoltaic
+  generator:source=solar
+  generator:type=solar_photovoltaic_panel
+  location=roof
+  generator:output:electricity=XXX kWp
+  ref=`+ dataSet["mastrnr"];
+  navigator.clipboard.writeText(text).then(function() {
+    console.log('Copied suggested tags to the clipboard');
+    event.target.className = "btn btn-success";
+  }, function(err) {
+    console.error('Could not copy suggested tags to the clipboard', err);
+    event.target.className = "btn btn-danger";
+  });
+}
+
 function load_zip_code_data(zip_code) {
   fetch("data/" + zip_code + ".json")
     .then((response) => response.json())
@@ -102,6 +121,7 @@ function load_zip_code_data(zip_code) {
         // MaStR Link
         var mastrReference = missingGenerator["mastrReference"];
         var mastrLink = document.createElement("a");
+        mastrLink.className = "fixed";
         mastrLink.target = "_blank";
         mastrLink.innerHTML = mastrReference;
         if (missingGenerator["mastrDetailUrl"]) {
@@ -118,12 +138,22 @@ function load_zip_code_data(zip_code) {
         }
         osmEditLink.classList = "btn btn-primary"
         osmEditLink.innerHTML = "Edit on OSM";
+
+        var copyTagsItem = document.createElement("a");
+        copyTagsItem.className = "btn btn-secondary";
+        copyTagsItem.innerHTML = "Copy suggested tags";
+        copyTagsItem.dataset["mastrnr"] = mastrReference;
+        copyTagsItem.onclick = function(event) {
+          handleCopyTagsItemClick(event);
+        };
+
         
         var generatorListItem = document.createElement("li");
-        generatorListItem.className = "fixed";
         generatorListItem.appendChild(mastrLink);
         generatorListItem.append(" ");
         generatorListItem.appendChild(osmEditLink);
+        generatorListItem.append(" ");
+        generatorListItem.append(copyTagsItem);
         missingGeneratorsElement.appendChild(generatorListItem);
       }
     });
