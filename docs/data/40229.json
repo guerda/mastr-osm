@@ -8,7 +8,8 @@
         "2022-11-18T21:30:16.050410",
         "2022-12-03T12:54:40.345017",
         "2022-12-04T21:00:31.387622",
-        "2022-12-11T11:42:54.778327"
+        "2022-12-11T11:42:54.778327",
+        "2022-12-11T14:14:30.122942"
     ],
     "solarGenerators": [
         111,
@@ -19,9 +20,11 @@
         115,
         116,
         116,
+        116,
         116
     ],
     "solarGeneratorsMapped": [
+        37,
         37,
         37,
         37,
@@ -37,42 +40,49 @@
             "mastrReference": "SEE937818440653",
             "lat": 51.198255,
             "lon": 6.854111,
+            "capacity": 56.16,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/2577839"
         },
         {
             "mastrReference": "SEE904910888867",
             "lat": 51.197466,
             "lon": 6.851064,
+            "capacity": 60.48,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/3321601"
         },
         {
             "mastrReference": "SEE998647808908",
             "lat": 51.193696,
             "lon": 6.862679,
+            "capacity": 94.32,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/3726336"
         },
         {
             "mastrReference": "SEE951654675338",
             "lat": 51.194003,
             "lon": 6.863843,
+            "capacity": 38.88,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/3726627"
         },
         {
             "mastrReference": "SEE997434975137",
             "lat": 51.194297,
             "lon": 6.863301,
+            "capacity": 89.513,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/3733573"
         },
         {
             "mastrReference": "SEE993656161563",
             "lat": 51.197143,
             "lon": 6.852144,
+            "capacity": 44.2,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/4080417"
         },
         {
             "mastrReference": "SEE970990203326",
             "lat": 51.197197,
             "lon": 6.848082,
+            "capacity": 33.3,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/4098863"
         }
     ]

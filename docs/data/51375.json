@@ -9,7 +9,8 @@
         "2022-10-30T13:57:42.838163",
         "2022-12-03T19:39:48.417292",
         "2022-12-04T21:22:23.507984",
-        "2022-12-11T12:04:45.456515"
+        "2022-12-11T12:04:45.456515",
+        "2022-12-11T14:36:11.178225"
     ],
     "solarGenerators": [
         428,
@@ -21,9 +22,11 @@
         432,
         447,
         447,
+        449,
         449
     ],
     "solarGeneratorsMapped": [
+        0,
         0,
         0,
         0,
@@ -40,36 +43,42 @@
             "mastrReference": "SEE908994508659",
             "lat": 50.022017,
             "lon": 7.041563,
+            "capacity": 56.05,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/2145060"
         },
         {
             "mastrReference": "SEE964749814048",
             "lat": 50.022017,
             "lon": 7.041563,
+            "capacity": 47.88,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/2145223"
         },
         {
             "mastrReference": "SEE940327932847",
             "lat": 50.022017,
             "lon": 7.041563,
+            "capacity": 41.42,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/2145276"
         },
         {
             "mastrReference": "SEE902406563557",
             "lat": 51.024937,
             "lon": 7.030017,
+            "capacity": 119.0,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/4193416"
         },
         {
             "mastrReference": "SEE939283903831",
             "lat": 51.024793,
             "lon": 7.044767,
+            "capacity": 52.08,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/4259450"
         },
         {
             "mastrReference": "SEE911497115088",
             "lat": 51.023676,
             "lon": 7.029538,
+            "capacity": 134.4,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/4596251"
         }
     ]
