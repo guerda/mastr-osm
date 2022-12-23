@@ -11,7 +11,8 @@
         "2022-12-04T21:21:42.578881",
         "2022-12-11T12:04:10.211100",
         "2022-12-11T14:35:27.666673",
-        "2022-12-16T09:09:56.216981"
+        "2022-12-16T09:09:56.216981",
+        "2022-12-23T20:16:42.947469"
     ],
     "solarGenerators": [
         127,
@@ -25,9 +26,11 @@
         133,
         133,
         133,
-        133
+        133,
+        134
     ],
     "solarGeneratorsMapped": [
+        0,
         0,
         0,
         0,
@@ -123,8 +126,15 @@
             "mastrReference": "SEE921386074792",
             "lat": 51.053314,
             "lon": 7.00582,
-            "capacity": 553.0,
+            "capacity": 550.0,
             "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/5055005"
+        },
+        {
+            "mastrReference": "SEE918119941308",
+            "lat": 51.020811,
+            "lon": 6.995468,
+            "capacity": 99.6,
+            "mastrDetailUrl": "https://www.marktstammdatenregister.de/MaStR/Einheit/Detail/IndexOeffentlich/5147276"
         }
     ]
 }
