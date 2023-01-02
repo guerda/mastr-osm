@@ -13,6 +13,7 @@ from zeep.transports import Transport
 from generator import SolarGenerator
 import tempfile
 from datetime import datetime
+import humanize
 
 
 class PowerGenerator:
@@ -73,7 +74,10 @@ class MastrClient:
         start_time = datetime.now()
         detail_url = self.get_mastr_detail_url(mastr_reference)
         stop_time = datetime.now()
-        self.log.debug("MaStR detail URL call took %s" % (stop_time - start_time))
+        self.log.debug(
+            "MaStR detail URL call took %s"
+            % humanize.precisedelta(stop_time - start_time)
+        )
         sg.mastr_detail_url = detail_url
         return sg
 
@@ -97,7 +101,10 @@ class MastrClient:
                     limit=self.ITEM_CALL_LIMIT,
                 )
                 stop_time = datetime.now()
-                self.log.info("Call to MaStR API took %s " % (stop_time - start_time))
+                self.log.info(
+                    "Search in MaStR API took %s "
+                    % humanize.precisedelta(stop_time - start_time)
+                )
                 self.log.debug("Return code: %s" % result["Ergebniscode"])
                 self.log.debug(
                     "Got %d generators from MaStR" % len(result["Einheiten"])

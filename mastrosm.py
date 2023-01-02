@@ -13,6 +13,7 @@ from mastrclient import MastrClient
 from municipality import MunicipalityHistory
 from rich.logging import RichHandler
 from generator import SolarGenerator
+import humanize
 
 
 def generator_to_history_info(generator: SolarGenerator):
@@ -44,18 +45,26 @@ def process_zip_code(
         int, int: count of solar generators in MaStr, count of solar generators in
          OpenStreetMap
     """
+    overall_start_time = datetime.now()
     log.info("Downloading zip code %s" % zip_code)
     # MaStR
     log.info("Load data from MaStR...")
     start_time = datetime.now()
     solar_generators = mastrclient.get_solar_generators(zip_code=zip_code)
     stop_time = datetime.now()
-    log.info("Retrieving MaStR data took %s" % (stop_time - start_time))
+    log.info(
+        "Retrieving MaStR data took %s" % humanize.precisedelta(stop_time - start_time)
+    )
     count_mastr = len(solar_generators)
 
     # OpenStreetMap
     log.info("Load data from OSM...")
+    start_time = datetime.now()
     solar_generators_osm = osmdownloader.get_solar_generators(zip_code=zip_code)
+    stop_time = datetime.now()
+    log.info(
+        "Loading data from OSM took %s " % humanize.precisedelta(stop_time - start_time)
+    )
     count_osm = len(solar_generators_osm)
 
     # Missing commercial generators in OSM
@@ -72,12 +81,17 @@ def process_zip_code(
 
                 gh = generator_to_history_info(g)
                 missing_generators.append(gh)
-    log.info(missing_generators)
+    log.debug(missing_generators)
 
     log.debug("Got %d generators in OpenStreetMap" % count_osm)
     mapped_quota = count_osm / count_mastr
     log.debug(
         "%.2f %% solar generators captured in %s in OSM" % (mapped_quota, zip_code)
+    )
+    overall_stop_time = datetime.now()
+    log.info(
+        "Overall process for zip code took %s"
+        % humanize.precisedelta(overall_stop_time - overall_start_time)
     )
     return count_mastr, count_osm, missing_generators
 
@@ -163,8 +177,11 @@ if __name__ == "__main__":
         except requests.exceptions.ConnectionError:
             log.exception("Could not download data for zip code %s" % zip_code)
 
-        log.info("Waiting in order to not overload the server.")
-        time.sleep(3)
+        waiting_time = 0.5
+        log.info(
+            "Waiting %.2f seconds in order to not overload the server." % waiting_time
+        )
+        time.sleep(waiting_time)
 
     available_zip_codes = []
     for zip_code, city in zip_codes:
