@@ -72,28 +72,34 @@ def process_zip_code(
 
     missing_generators = []
     for g in solar_generators:
-        if g.is_commercial:
-            if g.mastr_reference not in osm_refs:
-                # Add location
-                lat, lon = mastrclient.get_generator_details(g.mastr_reference)
-                g.lat = lat
-                g.lon = lon
-
-                gh = generator_to_history_info(g)
-                missing_generators.append(gh)
+        if g.is_commercial and g.mastr_reference not in osm_refs:
+            gh = obtain_generator_details(g, mastrclient)
+            missing_generators.append(gh)
     log.debug(missing_generators)
-
     log.debug("Got %d generators in OpenStreetMap" % count_osm)
+
+    # Quota of mapped generators
     mapped_quota = count_osm / count_mastr
     log.debug(
         "%.2f %% solar generators captured in %s in OSM" % (mapped_quota, zip_code)
     )
+
     overall_stop_time = datetime.now()
     log.info(
         "Overall process for zip code took %s"
         % humanize.precisedelta(overall_stop_time - overall_start_time)
     )
     return count_mastr, count_osm, missing_generators
+
+
+def obtain_generator_details(g: SolarGenerator, mastrclient: MastrClient):
+    # Add location
+    lat, lon = mastrclient.get_generator_details(g.mastr_reference)
+    g.lat = lat
+    g.lon = lon
+
+    gh = generator_to_history_info(g)
+    return gh
 
 
 if __name__ == "__main__":
