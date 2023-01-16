@@ -21,7 +21,7 @@ Then run the report generator
     source env
     pipenv run python mastrosm.py
 
-This will generate _all_ reports for all zip codes.
+This will generate _all_ reports for a subset zip codes.
 
 
 MaStR documentation
