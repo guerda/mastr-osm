@@ -11,7 +11,7 @@ zeep = "*"
 rich = "*"
 overpass = {editable = true, ref = "dc966113579d4e6d0e179af3fddc3b9221d6adaa", git = "https://github.com/mvexel/overpass-api-python-wrapper"}
 pydantic = ">=1.10.2"
-humanize = "==4.4.0"
+humanize = "==4.5.0"
 
 [dev-packages]
 black = "*"
