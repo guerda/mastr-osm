@@ -118,7 +118,7 @@
                 "sha256:f8303414c7b03f794347ad062c0516cee0e15f7a612abd0ce1e25caf6ceb47df",
                 "sha256:fca62a8301b605b954ad2e9c3666f9d97f63872aa4efcae5492baca2056b74ab"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==3.1.0"
         },
         "geojson": {
@@ -126,7 +126,7 @@
                 "sha256:e49df982b204ed481e4c1236c57f587adf71537301cf8faf7120ab27d73c7568",
                 "sha256:ff3d75acab60b1e66504a11f7ea12c104bad32ff3c410a807788663b966dee4a"
             ],
-            "markers": "python_version < '3.12' and python_full_version >= '3.7.0'",
+            "markers": "python_version < '3.12' and python_version >= '3.7'",
             "version": "==3.0.1"
         },
         "humanize": {
@@ -240,7 +240,7 @@
                 "sha256:5a35f8d1870171d9acc47b99612dc146129b631baf04970128b568f190d0cc30",
                 "sha256:7c9a5e412688bc771c67432cbfebcdd686c93ce6484913dccf06cb5a0bea35a1"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==2.2.0"
         },
         "mdurl": {
@@ -248,7 +248,7 @@
                 "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8",
                 "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==0.1.2"
         },
         "numpy": {
@@ -295,7 +295,7 @@
                 "sha256:024996549ee88ec1a9aa99ff7f8fc819bb59e2c3477b410d90a16d32d6e707aa",
                 "sha256:e5986afb596e4bb5bde29a79ac9061aa955b94fca2399b7aaac4090860920dd8"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==3.1.1"
         },
         "pydantic": {
@@ -380,11 +380,11 @@
         },
         "rich": {
             "hashes": [
-                "sha256:125d96d20c92b946b983d0d392b84ff945461e5a06d3867e9f9e575f8697b67f",
-                "sha256:8aa57747f3fc3e977684f0176a88e789be314a99f99b43b75d1e9cb5dc6db9e9"
+                "sha256:91954fe80cfb7985727a467ca98a7618e5dd15178cc2da10f553b36a93859001",
+                "sha256:a104f37270bf677148d8acb07d33be1569eeee87e2d1beb286a4e9113caf6f2f"
             ],
             "index": "pypi",
-            "version": "==13.3.1"
+            "version": "==13.3.2"
         },
         "shapely": {
             "hashes": [
@@ -427,7 +427,7 @@
                 "sha256:f32a748703e7bf6e92dfa3d2936b2fbfe76f8ce5f756e24f49ef72d17d26ad02",
                 "sha256:f470a130d6ddb05b810fc1776d918659407f8d025b7f56d2742a596b6dffa6c7"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==2.0.1"
         },
         "six": {
@@ -443,7 +443,7 @@
                 "sha256:49e5368c2cda80ee7e84da9dbe3e110b70a4575f196efb74e51b94549d921955",
                 "sha256:e28dba9ca6c7c00173e34e4ba57448f0688bb681b7c5e8bf4971daafc093d69a"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==2.4"
         },
         "tqdm": {
@@ -459,7 +459,7 @@
                 "sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb",
                 "sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==4.5.0"
         },
         "urllib3": {
@@ -588,7 +588,7 @@
                 "sha256:024996549ee88ec1a9aa99ff7f8fc819bb59e2c3477b410d90a16d32d6e707aa",
                 "sha256:e5986afb596e4bb5bde29a79ac9061aa955b94fca2399b7aaac4090860920dd8"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==3.1.1"
         },
         "pluggy": {
