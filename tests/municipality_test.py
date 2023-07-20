@@ -30,7 +30,7 @@ def test_represent_as_json():
 def test_load_from_json():
     with open("tests/history.json", "r") as f:
         history_json = json.load(f)
-        m = MunicipalityHistory.model_validate_json(history_json)
+        m = MunicipalityHistory.model_validate(history_json)
         assert len(m.dates) == 3
         assert len(m.solarGenerators) == 3
         assert len(m.solarGeneratorsMapped) == 3
