@@ -1,5 +1,6 @@
 from municipality import MunicipalityHistory, MunicipalityHistoryV1
 from datetime import datetime
+import json
 import pydantic
 
 
@@ -18,21 +19,23 @@ def test_represent_as_json():
     m.dates = [datetime(2022, 1, 31, 14, 1, 3, 3)]
     m.solarGenerators = [0, 1, 2]
     m.solarGeneratorsMapped = [0, 0, 1]
-    m_json = m.json()
+    m_json = m.model_dump_json()
     assert (
-        """{"dates": ["2022-01-31T14:01:03.000003"], "solarGenerators": [0, 1, 2],"""
-        """ "solarGeneratorsMapped": [0, 0, 1],"""
-        """ "missingCommercialGenerators": null}""" == m_json
+        """{"dates":["2022-01-31T14:01:03.000003"],"solarGenerators":[0,1,2],"""
+        """"solarGeneratorsMapped":[0,0,1],"""
+        """"missingCommercialGenerators":null}""" == m_json
     )
 
 
 def test_load_from_json():
-    m = pydantic.parse_file_as(path="tests/history.json", type_=MunicipalityHistory)
-    assert len(m.dates) == 3
-    assert len(m.solarGenerators) == 3
-    assert len(m.solarGeneratorsMapped) == 3
-    assert m.solarGenerators == [20, 34, 40]
-    assert m.solarGeneratorsMapped == [1, 2, 3]
+    with open("tests/history.json", "r") as f:
+        history_json = json.load(f)
+        m = MunicipalityHistory.model_validate(history_json)
+        assert len(m.dates) == 3
+        assert len(m.solarGenerators) == 3
+        assert len(m.solarGeneratorsMapped) == 3
+        assert m.solarGenerators == [20, 34, 40]
+        assert m.solarGeneratorsMapped == [1, 2, 3]
 
 
 def test_convert_to_v2():
