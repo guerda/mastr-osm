@@ -19,7 +19,7 @@ def test_represent_as_json():
     m.dates = [datetime(2022, 1, 31, 14, 1, 3, 3)]
     m.solarGenerators = [0, 1, 2]
     m.solarGeneratorsMapped = [0, 0, 1]
-    m_json = m.json()
+    m_json = m.model_dump_json()
     assert (
         """{"dates":["2022-01-31T14:01:03.000003"],"solarGenerators":[0,1,2],"""
         """"solarGeneratorsMapped":[0,0,1],"""
