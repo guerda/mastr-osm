@@ -158,7 +158,9 @@ if __name__ == "__main__":
         m: MunicipalityHistory = MunicipalityHistory()
         if os.path.isfile(history_file):
             try:
-                m = pydantic.parse_file_as(path=history_file, type_=MunicipalityHistory)
+                with open(history_file, "r") as f:
+                    history_json = json.load(f)
+                    m = MunicipalityHistory.model_validate_json(history_json)
             except pydantic.error_wrappers.ValidationError:
                 log.exception("Could not load history file '%s'" % history_file)
         # Skip if data is newer than 24 hours
