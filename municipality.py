@@ -50,7 +50,7 @@ if __name__ == "__main__":
         try:
             with open(file_name, "r") as f:
                 history_json = json.load(f)
-                m = MunicipalityHistory.model_validate_json(history_json)
+                m = MunicipalityHistory.model_validate(history_json)
                 print("Parsed as V2, skipping")
         except pydantic.error_wrappers.ValidationError:
             try:
