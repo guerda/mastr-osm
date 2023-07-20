@@ -1,5 +1,6 @@
 from municipality import MunicipalityHistory, MunicipalityHistoryV1
 from datetime import datetime
+import json
 import pydantic
 
 
@@ -27,12 +28,14 @@ def test_represent_as_json():
 
 
 def test_load_from_json():
-    m = pydantic.parse_file_as(path="tests/history.json", type_=MunicipalityHistory)
-    assert len(m.dates) == 3
-    assert len(m.solarGenerators) == 3
-    assert len(m.solarGeneratorsMapped) == 3
-    assert m.solarGenerators == [20, 34, 40]
-    assert m.solarGeneratorsMapped == [1, 2, 3]
+    with open("tests/history.json", "r") as f:
+        history_json = json.load(f)
+        m = MunicipalityHistory.model_validate_json(history_json)
+        assert len(m.dates) == 3
+        assert len(m.solarGenerators) == 3
+        assert len(m.solarGeneratorsMapped) == 3
+        assert m.solarGenerators == [20, 34, 40]
+        assert m.solarGeneratorsMapped == [1, 2, 3]
 
 
 def test_convert_to_v2():
