@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
-from pydantic.schema import Optional
+from typing import Optional
 
 
 class CommercialGeneratorInfo(BaseModel):
