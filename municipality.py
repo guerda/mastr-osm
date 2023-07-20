@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
+import json
 
 
 class CommercialGeneratorInfo(BaseModel):
@@ -47,8 +48,10 @@ if __name__ == "__main__":
     for file_name in glob("docs/data/*.json"):
         print(file_name)
         try:
-            m = pydantic.parse_file_as(path=file_name, type_=MunicipalityHistory)
-            print("Parsed as V2, skipping")
+            with open(file_name, "r") as f:
+                history_json = json.load(f)
+                m = MunicipalityHistory.model_validate_json(history_json)
+                print("Parsed as V2, skipping")
         except pydantic.error_wrappers.ValidationError:
             try:
                 m = pydantic.parse_file_as(path=file_name, type_=MunicipalityHistoryV1)
