@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "description": "Fake package.json to get dependabot alerts",
     "dependencies": {
-        "plotly.js": "~2.26.0",
+        "plotly.js": "~2.27.1",
         "bootstrap": "~5.3.1"
     }
 }
